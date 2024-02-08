@@ -25,7 +25,7 @@ public class EmployeeService {
 	}
 
 	public List<Employee> updateEmployee(Employee emp) {
-		employeeRepo.saveAndFlush(emp);
+		employeeRepo.save(emp);
 		return employeeRepo.findAll();
 
 	}

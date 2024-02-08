@@ -15,7 +15,8 @@ import lombok.Data;
 // Useful in request on demand scenario
 @JsonIgnoreProperties({ "hibernateLazyInitializer" })
 @Entity
-@Table(name = "employee")
+@Table
+
 //@Data
 public class Employee implements Serializable {
 
