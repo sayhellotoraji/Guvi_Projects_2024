@@ -21,9 +21,6 @@ import com.rajasekar_t.employee_management.exceptions.CustomException;
 import com.rajasekar_t.employee_management.model.Employee;
 import com.rajasekar_t.employee_management.service.EmployeeService;
 
-
-
-
 //import io.swagger.v3.oas.annotations.tags.Tag;
 //@Tag(name = "Employee Controller", description = "Emp Controller API for Spring JPA")
 @RestController
@@ -58,16 +55,18 @@ public class EmployeeController {
 //	public ResponseEntity<Optional<Employee>> getEmployeeById(@PathVariable("empId") int empId) {
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("empId") int empId) throws CustomException {
 		Employee emp = employeeService.getEmployeeById(empId)
-				.orElseThrow(() -> new CustomException("Exception handling in Springboot"));
+				.orElseThrow(() -> new CustomException("Requested Employee with EmpId: " + empId + ", Not Found"));
 
 		return ResponseEntity.ok().body(emp);
 	}
-	
+
 //	@GetMapping("getEmployee/{name}") - Results in Ambiguous handler exception.
 	@GetMapping("getEmployeeByName/{name}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public ResponseEntity<Optional<Employee>> getEmployeeByName(@PathVariable("name") String name) {
-		Optional<Employee> emp = employeeService.getEmployeeByName(name);
+	public ResponseEntity<Employee> getEmployeeByName(@PathVariable("name") String name) throws CustomException {
+		Employee emp = employeeService.getEmployeeByName(name)
+				.orElseThrow(() -> new CustomException("Requested Employee with Name: " + name + ", Not Found"));
+
 		return ResponseEntity.ok().body(emp);
 	}
 
