@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +25,7 @@ import com.rajasekar_t.employee_management.service.EmployeeService;
 //import io.swagger.v3.oas.annotations.tags.Tag;
 //@Tag(name = "Employee Controller", description = "Emp Controller API for Spring JPA")
 @RestController
-//@RequestMapping("/api")
+@RequestMapping("/employee")
 public class EmployeeController {
 
 	@Autowired
