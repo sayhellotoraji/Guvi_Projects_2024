@@ -1,2 +1,37 @@
-
-Welcome page
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Home page</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+		Index Page
+<!--<div class="table-users">
+	<table >
+		<tr>
+			<th>Employee Name</th>
+			<th>Gender</th>
+			<th>Email</th>
+			<th>Department</th>
+			<th>Actions</th>
+		</tr>
+		<tr th:each="employee: ${listEmployees}">
+			<td th:text="${employee.first_name}"></td>
+			<td th:text="${employee.sex}"></td>
+			<td th:text="${employee.email}"></td>
+			<td th:text="${employee.department_name}"></td>
+			<td>
+				<a th:href="@{/update_employee/{id}(id=${employee.id})}" class=" btn"
+				   data-toggle="tooltip" title="Update">
+					<i class="fa fa-edit"></i></a>
+				<a th:href="@{/delete/{id}(id=${employee.id})}" data-toggle="tooltip" title="Delete"
+				   class=" btn red litghten-2">
+					<i class="fa fa-trash"></i></a>
+			</td>
+		</tr>
+	</table>
+</div>
+-->
+    </body>
+</html>
