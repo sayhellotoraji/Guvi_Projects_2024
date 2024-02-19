@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,13 +26,14 @@ import com.rajasekar_t.employee_management.service.EmployeeService;
 //import io.swagger.v3.oas.annotations.tags.Tag;
 //@Tag(name = "Employee Controller", description = "Emp Controller API for Spring JPA")
 @RestController
-@RequestMapping("/employee")
+//@RequestMapping("/employee")
 public class EmployeeController {
 
 	@Autowired
 	EmployeeService employeeService;
 
 	@CrossOrigin("*")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("addEmployee")
 	@ResponseStatus(HttpStatus.ACCEPTED) // Network Status Code
 	public ResponseEntity<List<Employee>> addEmployee(@RequestBody Employee emp) {
@@ -72,6 +74,7 @@ public class EmployeeController {
 	}
 
 	@CrossOrigin("*")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PutMapping("updateEmployee")
 	@ResponseStatus(HttpStatus.NO_CONTENT) // Just for Checking in Network responses
 	public ResponseEntity<List<Employee>> updateEmployee(@RequestBody Employee emp) {
@@ -80,6 +83,7 @@ public class EmployeeController {
 	}
 
 	@CrossOrigin("*")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@DeleteMapping("deleteEmployee/{empId}")
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	public ResponseEntity<List<Employee>> deleteEmployee(@PathVariable("empId") int empId) {
