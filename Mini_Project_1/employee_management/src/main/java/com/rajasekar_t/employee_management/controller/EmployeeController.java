@@ -25,8 +25,11 @@ import com.rajasekar_t.employee_management.service.EmployeeService;
 
 //import io.swagger.v3.oas.annotations.tags.Tag;
 //@Tag(name = "Employee Controller", description = "Emp Controller API for Spring JPA")
+
+
 @RestController
-//@RequestMapping("/employee")
+// Thymeleaf only works with Contoller, Not with RestController
+// @RequestMapping("/employee")
 public class EmployeeController {
 
 	@Autowired
@@ -41,6 +44,7 @@ public class EmployeeController {
 		return ResponseEntity.ok().body(employeeService.findAllEmployees());
 	}
 
+	@CrossOrigin("*")
 	@GetMapping("getEmployees")
 	public ResponseEntity<List<Employee>> getEmployees() {
 		return ResponseEntity.ok().body(employeeService.findAllEmployees());
@@ -53,6 +57,8 @@ public class EmployeeController {
 	 * 
 	 */
 
+
+	@CrossOrigin("*")
 	@GetMapping("getEmployee/{empId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 //	public ResponseEntity<Optional<Employee>> getEmployeeById(@PathVariable("empId") int empId) {
@@ -64,6 +70,8 @@ public class EmployeeController {
 	}
 
 //	@GetMapping("getEmployee/{name}") - Results in Ambiguous handler exception.
+	
+	@CrossOrigin("*")
 	@GetMapping("getEmployeeByName/{name}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Employee> getEmployeeByName(@PathVariable("name") String name) throws CustomException {
@@ -91,6 +99,7 @@ public class EmployeeController {
 		return ResponseEntity.ok().body(employeeService.findAllEmployees());
 	}
 
+	@CrossOrigin("*")
 	@GetMapping("search")
 	@ResponseStatus(HttpStatus.NO_CONTENT) // Just for Checking in Network responses
 	public ResponseEntity<Employee> getEmployeeQuery(@RequestParam("empId") int empId) {
