@@ -17,7 +17,7 @@ const url = "http://localhost:8081/getEmployee/1";
  getapi(url).then(()=>display());
 
 /*
- 
+
 Remember the display() method gets loaded before the json is fetched
 So inorder to execute the display method after the getapi is executed 
 Use Promises -> use .then()
