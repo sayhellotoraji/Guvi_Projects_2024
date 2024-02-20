@@ -7,22 +7,51 @@
  </head>
     <body>
 
-		Index Page
+     
+        <h1>Employee Management Page</h1>
+        <h1>By, Rajasekar T</h1>   
+        <br>  
+      
 
-	<table id="table" class="table table-bordered">
+	<!-- Dynamic Table to display the Fetch data from employee_management RestAPI -->
+	<div>
+
+  <!-- Margin left and Right = Auto to centre the table -->
+  <table id="table" class="table table-bordered" style="margin-left: auto; margin-right: auto;">
         <thead>
           <tr> 
+            <th><h2>Emp Id</h2></th>
             <th><h2>Name</h2></th>
+            <th><h2>Mobile Number</h2></th>
+            <th><h2>Email</h2></th>
+            <th><h2>Designation</h2></th>
+
           </tr>
         </thead>
 
+        <!-- Static Table content -->
+        <!-- 
         <tbody>
           <tr>
+            <td id="emp_id"></td>
             <td id="name"></td>
+            <td id="mobile_no"></td>
+            <td id="email"></td>
+            <td id="designation"></td>
           </tr>
+        </tbody> -->
+
+        <!-- Dynamic Table content -->
+        <tbody id="dynamicTable">
+
         </tbody>
       </table>
+    </div>
+
 
 	  <script src="script.js"></script>
+    <script>
+
+    </script>
     </body>
 </html>

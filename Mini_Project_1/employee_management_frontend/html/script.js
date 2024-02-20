@@ -4,17 +4,47 @@ async function getapi(url) {
   const response = await fetch(url);
   var fetched_data = await response.json();
   data = fetched_data;
-  console.log(data.first_name);
+  // Works For single record
+  console.log("single json - "+data.first_name);
+
+  // Works For multiple record
+  console.log("multiple json - "+data[0].first_name);
 }
 
+/*
+----------------- Works well for single row ----------------------
 function display() {
+  document.getElementById("emp_id").innerHTML = data.employee_id;
   document.getElementById("name").innerHTML = data.first_name;
+  document.getElementById("mobile_no").innerHTML = data.mobile_no;
+  document.getElementById("email").innerHTML = data.email;
+  document.getElementById("designation").innerHTML = data.department_name;
+}
+*/
+
+function display() {
+  // for Dynamic table creation
+
+  let dynamicHTML = "";
+  for (let row = 0; row < data.length; row++) {
+    // Use ` - backticks for multiple line string
+    dynamicHTML += `<tr>
+            <td>${data[row].employee_id}</td>
+            <td>${data[row].first_name}</td>
+            <td>${data[row].mobile_no}</td>
+            <td>${data[row].email}</td>
+            <td>${data[row].department_name}</td>
+            </tr>`;
+  }
+
+  let ele = document.getElementById("dynamicTable");
+  ele.innerHTML = dynamicHTML;
 }
 
 let data;
-const url = "http://localhost:8081/getEmployee/1";
+const url = "http://localhost:8081/getEmployees";
 
- getapi(url).then(()=>display());
+getapi(url).then(() => display());
 
 /*
 
@@ -25,7 +55,6 @@ getapi(url);
 display();
 
 */
-
 
 //****************************************************************** */
 
