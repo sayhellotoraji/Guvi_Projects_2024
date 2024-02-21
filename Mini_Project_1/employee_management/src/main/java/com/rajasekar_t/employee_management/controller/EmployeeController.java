@@ -39,7 +39,8 @@ public class EmployeeController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("addEmployee")
 	@ResponseStatus(HttpStatus.ACCEPTED) // Network Status Code
-	public ResponseEntity<List<Employee>> addEmployee(@RequestBody Employee emp) {
+	// Remove @RequestBody with Employee emp - Gives an exception at Frontend
+	public ResponseEntity<List<Employee>> addEmployee(Employee emp) {
 		employeeService.addEmployee(emp);
 		return ResponseEntity.ok().body(employeeService.findAllEmployees());
 	}

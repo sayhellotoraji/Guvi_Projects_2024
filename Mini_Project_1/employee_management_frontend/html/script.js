@@ -1,14 +1,16 @@
 //            Acutal Working Code
 
+// Fetch API
 async function getapi(url) {
   const response = await fetch(url);
   var fetched_data = await response.json();
   data = fetched_data;
   // Works For single record
-  console.log("single json - "+data.first_name);
+  console.log("single json - " + data.first_name);
 
   // Works For multiple record
-  console.log("multiple json - "+data[0].first_name);
+  console.log("multiple json - " + data[0].first_name);
+  console.log(data);
 }
 
 /*
@@ -22,6 +24,7 @@ function display() {
 }
 */
 
+// Display Fetched Records
 function display() {
   // for Dynamic table creation
 
@@ -34,11 +37,28 @@ function display() {
             <td>${data[row].mobile_no}</td>
             <td>${data[row].email}</td>
             <td>${data[row].department_name}</td>
+            <td><a href="update_employee">Update</a></td>
+            <td><a href="#">Delete</a></td>
             </tr>`;
   }
-
   let ele = document.getElementById("dynamicTable");
   ele.innerHTML = dynamicHTML;
+}
+
+/*
+Testing - Redirect link after form submit
+
+function redirectFunction() {
+  window.location.href = "http://127.0.0.1:5500/html/";
+}
+
+*/
+
+document.getElementById("employeeForm").addEventListener("submit", redirectFunction);
+
+function redirectFunction() {
+  alert("The form was submitted");
+  window.location.href = "http://127.0.0.1:5500/html/";
 }
 
 let data;

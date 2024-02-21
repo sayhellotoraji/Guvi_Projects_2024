@@ -1,1 +1,94 @@
-Add Employee Page
+<!DOCTYPE html>
+<head>
+  <title>Add Employee</title>
+  <!-- <meta charset="UTF-8"/>-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <center><h3>Add Employee Page</h3></center>
+
+  <center>
+    <!-- Do not use onclick, Instead use onsubmit with FORM-->
+    <!-- Testing purpose: return false in form properties to avoid form to be submitted -->
+    <!-- Action Property does not work along with  onsubmit="redirectFunction();" -->
+    <form id="employeeForm"
+      method="post"
+      action="http://localhost:8081/addEmployee"
+      style="width: 100%"
+    >
+      <!-- <label for="first_name">First name:</label><br> -->
+      <table>
+        <tr>
+          <td><label for="first_name">First name:</label></td>
+          <td><input type="text" id="first_name" name="first_name" /></td>
+        </tr>
+
+        <tr>
+          <td><label for="middle_name">Middle name:</label></td>
+          <td>
+            <input type="text" id="middle_name" name="middle_name" /><br />
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="last_name">Last name:</label></td>
+          <td><input type="text" id="last_name" name="last_name" /><br /></td>
+        </tr>
+
+        <tr>
+          <td><label for="dob">DOB:</label></td>
+          <td><input type="text" id="dob" name="dob" /><br /></td>
+        </tr>
+
+        <tr>
+          <td><label for="sex">Sex:</label></td>
+          <td><input type="text" id="sex" name="sex" /><br /></td>
+        </tr>
+
+        <tr>
+          <td><label for="mobile_no">Mobile No:</label></td>
+          <td><input type="text" id="mobile_no" name="mobile_no" /><br /></td>
+        </tr>
+
+        <tr>
+          <td><label for="email">Email:</label></td>
+          <td><input type="text" id="email" name="email" /><br /></td>
+        </tr>
+
+        <tr>
+          <td><label for="address">Address:</label></td>
+          <td><input type="text" id="address" name="address" /><br /></td>
+        </tr>
+
+        <tr>
+          <td><label for="doj">DOJ:</label></td>
+          <td><input type="text" id="doj" name="doj" /><br /></td>
+        </tr>
+
+        <tr>
+          <td><label for="department_name">Designation:</label></td>
+          <td>
+            <input
+              type="text"
+              id="department_name"
+              name="department_name"
+            /><br />
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="salary">Salary:</label><br /></td>
+          <td><input type="text" id="salary" name="salary" /><br /></td>
+        </tr>
+      </table>
+
+      <br />
+      <input type="submit" id="submitEmployee" value="Add Employee" />
+    </form>
+  </center>
+
+  <!-- Testing redirect:  <button onclick="redirectFunction()">Landing page</button> -->
+  <script src="script.js"></script>
+</body>
