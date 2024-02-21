@@ -47,19 +47,15 @@ function display() {
 
 /*
 Testing - Redirect link after form submit
-
-function redirectFunction() {
-  window.location.href = "http://127.0.0.1:5500/html/";
-}
-
-*/
-
 document.getElementById("employeeForm").addEventListener("submit", redirectFunction);
 
 function redirectFunction() {
   alert("The form was submitted");
   window.location.href = "http://127.0.0.1:5500/html/";
 }
+
+*/
+
 
 let data;
 const url = "http://localhost:8081/getEmployees";

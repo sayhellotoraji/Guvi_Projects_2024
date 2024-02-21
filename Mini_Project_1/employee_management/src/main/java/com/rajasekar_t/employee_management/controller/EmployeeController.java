@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,7 +27,6 @@ import com.rajasekar_t.employee_management.service.EmployeeService;
 //import io.swagger.v3.oas.annotations.tags.Tag;
 //@Tag(name = "Employee Controller", description = "Emp Controller API for Spring JPA")
 
-
 @RestController
 // Thymeleaf only works with Contoller, Not with RestController
 // @RequestMapping("/employee")
@@ -39,9 +39,11 @@ public class EmployeeController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("addEmployee")
 	@ResponseStatus(HttpStatus.ACCEPTED) // Network Status Code
+
 	// Remove @RequestBody with Employee emp - Gives an exception at Frontend
 	public ResponseEntity<List<Employee>> addEmployee(Employee emp) {
 		employeeService.addEmployee(emp);
+
 		return ResponseEntity.ok().body(employeeService.findAllEmployees());
 	}
 
@@ -58,7 +60,6 @@ public class EmployeeController {
 	 * 
 	 */
 
-
 	@CrossOrigin("*")
 	@GetMapping("getEmployee/{empId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
@@ -71,7 +72,7 @@ public class EmployeeController {
 	}
 
 //	@GetMapping("getEmployee/{name}") - Results in Ambiguous handler exception.
-	
+
 	@CrossOrigin("*")
 	@GetMapping("getEmployeeByName/{name}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
