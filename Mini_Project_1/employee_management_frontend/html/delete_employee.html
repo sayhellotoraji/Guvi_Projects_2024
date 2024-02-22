@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+  <title>Delete Employee</title>
+  <!-- <meta charset="UTF-8"/>-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <center><h3 id="confirmation_msg">Delete Employee with id: </h3></center>
+
+  <center>
+    <form
+      id="deleteEmployeeForm"
+      method="post"
+      action="http://localhost:8081/delete/"
+      style="width: 100%"
+    >
+      <input
+        type="submit"
+        id="deleteEmployee"
+        value="Confirm Employee Deletion"
+      />
+    </form>
+  </center>
+
+  <!-- Testing redirect:  <button onclick="redirectFunction()">Landing page</button> -->
+  <script src="script_delete.js"></script>
+</body>

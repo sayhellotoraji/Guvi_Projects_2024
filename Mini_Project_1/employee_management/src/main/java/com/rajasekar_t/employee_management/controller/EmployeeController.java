@@ -43,7 +43,6 @@ public class EmployeeController {
 	// Remove @RequestBody with Employee emp - Gives an exception at Frontend
 	public ResponseEntity<List<Employee>> addEmployee(Employee emp) {
 		employeeService.addEmployee(emp);
-
 		return ResponseEntity.ok().body(employeeService.findAllEmployees());
 	}
 
