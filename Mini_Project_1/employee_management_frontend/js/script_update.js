@@ -7,11 +7,13 @@ async function getapi(employee_list_url) {
   // Contains the Returned Employee Record
   data = fetched_data;
 
-  // Works For single record
+/*  
+  Works For single record
   console.log("single json - " + data.first_name);
 
-  // The Employee Record is returned
+  The Employee Record is returned
   console.log(data);
+*/
 }
 /*************************************************************** */
 
@@ -45,4 +47,4 @@ const get_employee_id_url = employee_url + window.location.href.split("=")[1];
 getapi(get_employee_id_url).then(() => populateForm());
 
 // Testing - Fetch current url & get empID
-console.log(employee_url + window.location.href.split("=")[1]);
+// console.log(employee_url + window.location.href.split("=")[1]);
