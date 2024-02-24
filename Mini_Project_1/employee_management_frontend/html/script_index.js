@@ -23,6 +23,7 @@ function display() {
             <td>${data[row].mobile_no}</td>
             <td>${data[row].email}</td>
             <td>${data[row].department_name}</td>
+            <td><a href="view_employee.html?empID=${data[row].employee_id}">View</a></td>
             <td><a href="update_employee.html?empID=${data[row].employee_id}">Update</a></td>
             <td><a href="delete_employee.html?empID=${data[row].employee_id}">Delete</a></td>
             </tr>`;

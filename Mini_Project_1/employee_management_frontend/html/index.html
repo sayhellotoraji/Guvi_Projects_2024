@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-    <head>
-        <title>Employee Home page</title>
-        <!-- <meta charset="UTF-8"/> -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="styles.css" />
-    </head>
-    <body>
+<html>
+  <head>
+    <title>Employee Home page</title>
+    <!-- <meta charset="UTF-8"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Employee Management Page</h1>
+    <h1>By, Rajasekar T</h1>
+    <br />
 
-     
-        <h1>Employee Management Page</h1>
-        <h1>By, Rajasekar T</h1>   
-        <br>  
-      
-
-      <!-- For Future Reference
+    <!-- For Future Reference
       With Form Tags:
           - Do not use onclick, instead use onsubmit 
           
@@ -26,20 +24,27 @@
             It is developers Reponsibility to handle it at server side
     -->
 
-  <center><button><a href="add_employee.html">Add Employee</a></button></center>
-	<!-- Dynamic Table to display the Fetch data from employee_management RestAPI -->
-	<div>
+    <center>
+      <button><a href="add_employee.html">Add Employee</a></button>
+    </center>
+    <br />
 
-  <!-- Margin left and Right = Auto to centre the table -->
-  <table id="table" class="table table-bordered" style="margin-left: auto; margin-right: auto;">
+    <!-- Dynamic Table to display the Fetch data from employee_management RestAPI -->
+    <div>
+      <!-- Margin left and Right = Auto to centre the table -->
+      <table
+        id="table"
+        class="table table-bordered"
+        style="margin-left: auto; margin-right: auto"
+      >
         <thead>
-          <tr> 
+          <tr>
             <th><h2>Emp Id</h2></th>
             <th><h2>Name</h2></th>
             <th><h2>Mobile Number</h2></th>
             <th><h2>Email</h2></th>
             <th><h2>Designation</h2></th>
-
+            <th colspan="3"><h2>Action</h2></th>
           </tr>
         </thead>
 
@@ -56,16 +61,11 @@
         </tbody> -->
 
         <!-- Dynamic Table content -->
-        <tbody id="dynamicTable">
-
-        </tbody>
+        <tbody id="dynamicTable"></tbody>
       </table>
     </div>
 
-
-	  <script src="script_index.js"></script>
-    <script>
-
-    </script>
-    </body>
+    <script src="script_index.js"></script>
+    <script></script>
+  </body>
 </html>

@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login</title>
+  <body>
+    <center><h1>Login</h1></center>
+    <br />
+    <center>
+      <div id="login_form">
+        <!--<form th:action="@{/login}" method="post">-->
 
-</head>
+        <!-- Method get - works, but post does not work please check -->
+        <form action="/html/" method="get">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required autofocus />
 
-<body>
-	<div align="center">
+          <br /><br /><br />
 
-		<br>
-		<h4>Login</h4>
-	</div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
 
-	<!--<form th:action="@{/login}" method="post">-->
+          <br /><br /><br />
 
-	<form action="index" method="post">
-		<div id="login">
-			<label for="username">Username:</label>
-			<input type="text" id="username" name="username" required autofocus />
+          <!-- <button type="submit">Login</button> -->
 
-			<br /><br /><br />
-
-			<label for="password">Password:</label>
-			<input type="password" id="password" name="password" required />
-		</div>
-
-
-		<br /><br /><br />
-
-		<div>
-			<button type="submit">Login</button>
-		</div>
-	</form>
-</body>
-
+          <input type="submit" id="login_button" value="Login" name="login" />
+        </form>
+      </div>
+    </center>
+  </body>
 </html>
