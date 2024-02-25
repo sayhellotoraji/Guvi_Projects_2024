@@ -3,6 +3,8 @@ package com.rajasekar_t.employee_management.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import org.springframework.web.util.pattern.PatternParseException.PatternMessage;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -10,6 +12,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 // Useful in request on demand scenario
@@ -23,16 +34,47 @@ public class Employee implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int employee_id;
+
+	@NotEmpty
+	@Size(min = 2, max = 20, message = "First name can have 2 or more characters")
 	private String first_name;
+
 	private String middle_name;
+
+	@NotEmpty
+	@Size(min = 1, max = 1, message = "Last Name - Initial can have only 1 character")
 	private String last_name;
+
+	@NotEmpty
+	@Past
 	private LocalDate dob;
+
+	@NotEmpty
 	private String sex;
+
+	@NotEmpty
+	@Pattern(regexp="[6-9]{1}[0-9]{9}")
 	private String mobile_no;
+
+	@NotEmpty
+
+	@Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}")
 	private String email;
+
+	@NotEmpty
+	@Size(min = 15, max = 100, message = "Door No, Street, Area, City, State")
 	private String address;
+
+	@NotEmpty
+	@PastOrPresent
 	private LocalDate doj;
+
+	@NotEmpty
 	private String department_name;
+
+	@NotEmpty
+	@Min(value = 300000, message = "Min Salary")
+	@Max(value = 5000000, message = "Max Salary")
 	private Double salary;
 
 	public int getEmployee_id() {
@@ -136,5 +178,4 @@ public class Employee implements Serializable {
 		return "Employee [employee_id=" + employee_id + ", first_name=" + first_name + "]";
 	}
 
-	
 }
