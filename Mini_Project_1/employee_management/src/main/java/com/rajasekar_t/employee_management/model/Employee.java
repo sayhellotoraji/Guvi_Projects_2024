@@ -5,7 +5,9 @@ import java.time.LocalDate;
 
 import org.springframework.web.util.pattern.PatternParseException.PatternMessage;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -45,6 +47,8 @@ public class Employee implements Serializable {
 	@Size(min = 1, max = 1, message = "Last Name - Initial can have only 1 character")
 	private String last_name;
 
+	@JsonProperty("dob")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	@NotEmpty
 	@Past
 	private LocalDate dob;
@@ -53,7 +57,7 @@ public class Employee implements Serializable {
 	private String sex;
 
 	@NotEmpty
-	@Pattern(regexp="[6-9]{1}[0-9]{9}")
+	@Pattern(regexp = "[6-9]{1}[0-9]{9}")
 	private String mobile_no;
 
 	@NotEmpty
@@ -65,6 +69,9 @@ public class Employee implements Serializable {
 	@Size(min = 15, max = 100, message = "Door No, Street, Area, City, State")
 	private String address;
 
+	// Very important to overcome Unit test compilation error
+	@JsonProperty("doj")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	@NotEmpty
 	@PastOrPresent
 	private LocalDate doj;
