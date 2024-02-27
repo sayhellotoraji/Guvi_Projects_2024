@@ -47,8 +47,9 @@ public class Employee implements Serializable {
 	@Size(min = 1, max = 1, message = "Last Name - Initial can have only 1 character")
 	private String last_name;
 
-	@JsonProperty("dob")
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	// Very important to overcome Unit test compilation error
+//	@JsonProperty("dob")
+//	@JsonFormat(pattern = "dd/MM/yyyy")
 	@NotEmpty
 	@Past
 	private LocalDate dob;
@@ -70,8 +71,8 @@ public class Employee implements Serializable {
 	private String address;
 
 	// Very important to overcome Unit test compilation error
-	@JsonProperty("doj")
-	@JsonFormat(pattern = "dd/MM/yyyy")
+//	@JsonProperty("doj")
+//	@JsonFormat(pattern = "dd/MM/yyyy")
 	@NotEmpty
 	@PastOrPresent
 	private LocalDate doj;
