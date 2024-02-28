@@ -22,7 +22,7 @@ CREATE TABLE patient (
 
 
 # DML - Insertion of Records
-insert into patient(patient_name, dob, sex, mobile_no, address, email,login_password) 
+insert into patient(patient_name, dob, sex, mobile_no, address, email, login_password) 
 values('Rajasekar T', '1996-11-03', 'Male', '9999999999', '136J1, Tiruvannamalai, Tamil Nadu','rajasekar@gmail.com',  'JFSWD2');
 
 # DQL - Read All Records from the entity
@@ -50,5 +50,33 @@ values(1, '2021-08-10', 'Pelvic Fracture');
 
 # DQL - Read All Records from the entity
 select * from medical_history;
+
+#--------------------------------------------------------------------------------
+
+# 3. Doctor
+
+# DROP table Doctor;
+
+# DDL - Creation of Entity
+CREATE TABLE doctor (
+    doctor_id INT NOT NULL AUTO_INCREMENT,
+    doctor_name VARCHAR(24) NOT NULL,
+    dob DATE NOT NULL,
+    specialization VARCHAR(24) NOT NULL,
+    sex VARCHAR(10) NOT NULL,
+    mobile_no CHAR(10) NOT NULL,
+    address VARCHAR(100) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    login_password VARCHAR(24) NOT NULL,
+    PRIMARY KEY (doctor_id)
+);
+
+
+# DML - Insertion of Records
+insert into doctor(doctor_name, dob, specialization, sex, mobile_no, address, email, login_password) 
+values('Mahalakshmi T', '1998-12-11','Orthopedics','Female', '6666666666', '136J1, Tiruvannamalai, Tamil Nadu','mahalakshmi@gmail.com',  'mahauniv');
+
+# DQL - Read All Records from the entity
+select * from doctor;
 
 #--------------------------------------------------------------------------------
