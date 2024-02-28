@@ -7,7 +7,7 @@ USE Employee_Management;
 
 # DDL - Creation of Entity
 CREATE TABLE employee (
-    employee_id INT NULL AUTO_INCREMENT,
+    employee_id INT NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(24) NOT NULL,
     middle_name VARCHAR(24),
     last_name VARCHAR(24) NOT NULL,
