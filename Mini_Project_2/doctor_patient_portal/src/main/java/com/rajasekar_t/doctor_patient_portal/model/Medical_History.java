@@ -4,17 +4,23 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PastOrPresent;
 
 @JsonIgnoreProperties({ "hibernateLazyInitializer" })
-@Entity
+
+// Mandatory to add when naming convention is not followed
+// As _ is reserved, & class name is not a single word
+@Entity(name = "medical_history")
 @Table
+@NamedQuery(name = "Medical_History.PatientId", query = "from medical_history where patientId =:id")
 public class Medical_History {
 
 	@Id
@@ -22,7 +28,8 @@ public class Medical_History {
 	private int history_id;
 
 	@NotEmpty
-	private int history_patient_id;
+	@Column(name = "history_patient_id")
+	private int patientId;
 
 	@NotEmpty
 	@PastOrPresent
@@ -38,12 +45,20 @@ public class Medical_History {
 		this.history_id = history_id;
 	}
 
-	public int getHistory_patient_id() {
-		return history_patient_id;
+//	public int getHistory_patient_id() {
+//		return history_patient_id;
+//	}
+//
+//	public void setHistory_patient_id(int history_patient_id) {
+//		this.history_patient_id = history_patient_id;
+//	}
+
+	public int getPatientId() {
+		return patientId;
 	}
 
-	public void setHistory_patient_id(int history_patient_id) {
-		this.history_patient_id = history_patient_id;
+	public void setPatientId(int patientId) {
+		this.patientId = patientId;
 	}
 
 	public LocalDate getDiagnosis_date() {
