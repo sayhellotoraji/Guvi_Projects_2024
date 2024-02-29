@@ -1,5 +1,7 @@
 
-SHOW schemas;
+SHOW SCHEMAS;
+
+# Execute the command to shift the current database
 USE Doctor_Patient_DB;
 
 
@@ -22,11 +24,11 @@ CREATE TABLE patient (
 
 
 # DML - Insertion of Records
-insert into patient(patient_name, dob, sex, mobile_no, address, email, login_password) 
-values('Rajasekar T', '1996-11-03', 'Male', '9999999999', '136J1, Tiruvannamalai, Tamil Nadu','rajasekar@gmail.com',  'JFSWD2');
+INSERT INTO patient(patient_name, dob, sex, mobile_no, address, email, login_password) 
+VALUES('Rajasekar T', '1996-11-03', 'Male', '9999999999', '136J1, Tiruvannamalai, Tamil Nadu','rajasekar@gmail.com',  'JFSWD2');
 
 # DQL - Read All Records from the entity
-select * from patient;
+SELECT * FROM patient;
 
 #--------------------------------------------------------------------------------
 # 2. Medical History
@@ -45,11 +47,11 @@ CREATE TABLE medical_history (
 ); 
 
 # DML - Insertion of Records
-insert into medical_history(history_patient_id, diagnosis_date, medical_condition)
-values(1, '2021-08-10', 'Pelvic Fracture');
+INSERT INTO medical_history(history_patient_id, diagnosis_date, medical_condition)
+VALUES(1, '2021-08-10', 'Pelvic Fracture');
 
 # DQL - Read All Records from the entity
-select * from medical_history;
+SELECT * FROM medical_history;
 
 #--------------------------------------------------------------------------------
 
@@ -73,11 +75,11 @@ CREATE TABLE doctor (
 
 
 # DML - Insertion of Records
-insert into doctor(doctor_name, dob, specialization, sex, mobile_no, address, email, login_password) 
-values('Mahalakshmi T', '1998-12-11','Orthopedics','Female', '6666666666', '136J1, Tiruvannamalai, Tamil Nadu','mahalakshmi@gmail.com',  'mahauniv');
+INSERT INTO doctor(doctor_name, dob, specialization, sex, mobile_no, address, email, login_password) 
+VALUES('Mahalakshmi T', '1998-12-11','Orthopedics','Female', '6666666666', '136J1, Tiruvannamalai, Tamil Nadu','mahalakshmi@gmail.com',  'mahauniv');
 
 # DQL - Read All Records from the entity
-select * from doctor;
+SELECT * FROM doctor;
 
 #--------------------------------------------------------------------------------
 
@@ -94,8 +96,8 @@ CREATE TABLE appointment (
     appointment_patient_id INT,
     visit_date DATE,
 	slot INT,
-	availability BOOLEAN,
-	CONSTRAINT slot_ck CHECK(slot BETWEEN 1 and 24),
+	booked BOOLEAN DEFAULT FALSE,
+	CONSTRAINT slot_ck CHECK(slot BETWEEN 1 AND 24),
 #     CONSTRAINT availability_ck CHECK(availability <> TRUE),
     PRIMARY KEY (appointment_id),
     FOREIGN KEY (appointment_doctor_id)
@@ -104,10 +106,39 @@ CREATE TABLE appointment (
         REFERENCES patient (patient_id)
 );
 
-INSERT INTO appointment(appointment_doctor_id, appointment_patient_id, visit_date, slot, availability)
+INSERT INTO appointment(appointment_doctor_id, appointment_patient_id, visit_date, slot, booked)
 VALUES(1, 1, '2024-02-24', 1, TRUE);
 
 # Checking for available slots
-select visit_date, slot from appointment where availability=TRUE;
+SELECT visit_date, slot FROM appointment WHERE booked=TRUE;
 
-select * from appointment;
+SELECT * FROM appointment;
+
+
+#--------------------------------------------------------------------------------
+
+# 5. Prescription Table
+
+# DROP table prescription;
+
+# DDL - Creation of Entity
+
+CREATE TABLE prescription (
+    prescription_id INT NOT NULL AUTO_INCREMENT,
+    prescription_doctor_id INT,
+    prescription_patient_id INT,
+    issued_date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    findings VARCHAR(200),
+    medicines JSON,
+    PRIMARY KEY (prescription_id),
+    FOREIGN KEY (prescription_doctor_id)
+        REFERENCES doctor (doctor_id),
+    FOREIGN KEY (prescription_patient_id)
+        REFERENCES patient (patient_id)
+);
+
+INSERT INTO prescription(prescription_doctor_id, prescription_patient_id, findings, medicines)
+VALUES(1, 1, 'Cold & Fever', '{"medicines":{"dexilant":
+{"qty":3,"morning": 1, "afternoon":0, "night": 0}}}'); 
+
+SELECT * FROM prescription;
