@@ -80,3 +80,34 @@ values('Mahalakshmi T', '1998-12-11','Orthopedics','Female', '6666666666', '136J
 select * from doctor;
 
 #--------------------------------------------------------------------------------
+
+# 4. Appointment Table
+
+# DROP table appointment;
+
+# DDL - Creation of Entity
+# Instead of time - start and end
+# Use slots instead - Concise
+CREATE TABLE appointment (
+    appointment_id INT NOT NULL AUTO_INCREMENT,
+    appointment_doctor_id INT,
+    appointment_patient_id INT,
+    visit_date DATE,
+	slot INT,
+	availability BOOLEAN,
+	CONSTRAINT slot_ck CHECK(slot BETWEEN 1 and 24),
+#     CONSTRAINT availability_ck CHECK(availability <> TRUE),
+    PRIMARY KEY (appointment_id),
+    FOREIGN KEY (appointment_doctor_id)
+        REFERENCES doctor (doctor_id),
+    FOREIGN KEY (appointment_patient_id)
+        REFERENCES patient (patient_id)
+);
+
+INSERT INTO appointment(appointment_doctor_id, appointment_patient_id, visit_date, slot, availability)
+VALUES(1, 1, '2024-02-24', 1, TRUE);
+
+# Checking for available slots
+select visit_date, slot from appointment where availability=TRUE;
+
+select * from appointment;
