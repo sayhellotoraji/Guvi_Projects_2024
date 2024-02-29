@@ -16,7 +16,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 //Useful in request on demand scenario
-@JsonIgnoreProperties({ "hibernateLazyInitializer" })
+@JsonIgnoreProperties()
 @Entity
 @Table
 public class Doctor {
