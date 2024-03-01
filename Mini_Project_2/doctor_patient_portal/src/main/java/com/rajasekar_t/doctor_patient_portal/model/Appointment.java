@@ -15,6 +15,7 @@ import jakarta.validation.constraints.PastOrPresent;
 @Table
 @NamedQuery(name = "Appointment.PatientId", query = "from appointment where patientId =:id")
 @NamedQuery(name = "Appointment.DoctorId", query = "from appointment where doctorId =:id")
+@NamedQuery(name = "Appointment.DateSlot", query = "from appointment where visitDate =:vdate and booked=:booked")
 public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +28,8 @@ public class Appointment {
 	private int patientId;
 
 	@PastOrPresent
-	private LocalDate visit_date;
+	@Column(name = "visit_date")
+	private LocalDate visitDate;
 
 	private int slot;
 
@@ -57,12 +59,12 @@ public class Appointment {
 		this.patientId = patientId;
 	}
 
-	public LocalDate getVisit_date() {
-		return visit_date;
+	public LocalDate getVisitDate() {
+		return visitDate;
 	}
 
-	public void setVisit_date(LocalDate visit_date) {
-		this.visit_date = visit_date;
+	public void setVisitDate(LocalDate visitDate) {
+		this.visitDate = visitDate;
 	}
 
 	public int getSlot() {
