@@ -109,7 +109,8 @@ CREATE TABLE appointment (
 INSERT INTO appointment(appointment_doctor_id, appointment_patient_id, visit_date, slot, booked)
 VALUES(1, 1, '2024-02-24', 1, TRUE);
 
-# Checking for available slots
+# While booking a slot-> SET booked = true,
+# Check for available slots using repository layer method - In Java
 SELECT visit_date, slot FROM appointment WHERE booked=TRUE;
 
 SELECT * FROM appointment;
@@ -130,6 +131,7 @@ CREATE TABLE prescription (
     issued_date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     findings VARCHAR(200),
     medicines JSON,
+    # medicines VARCHAR(1000),
     PRIMARY KEY (prescription_id),
     FOREIGN KEY (prescription_doctor_id)
         REFERENCES doctor (doctor_id),
