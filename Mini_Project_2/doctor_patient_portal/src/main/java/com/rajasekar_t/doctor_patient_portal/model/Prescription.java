@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 import io.hypersistence.utils.hibernate.type.json.JsonType;
-import io.swagger.v3.core.util.Json;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -40,4 +39,53 @@ public class Prescription {
     @Type(JsonType.class)
     @Column(columnDefinition = "json")
 	private String medicines;
+
+	public int getPrescription_id() {
+		return prescription_id;
+	}
+
+	public void setPrescription_id(int prescription_id) {
+		this.prescription_id = prescription_id;
+	}
+
+	public int getDoctorId() {
+		return doctorId;
+	}
+
+	public void setDoctorId(int doctorId) {
+		this.doctorId = doctorId;
+	}
+
+	public int getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(int patientId) {
+		this.patientId = patientId;
+	}
+
+	public LocalDateTime getIssuedDateTime() {
+		return issuedDateTime;
+	}
+
+	public void setIssuedDateTime(LocalDateTime issuedDateTime) {
+		this.issuedDateTime = issuedDateTime;
+	}
+
+	public String getFindings() {
+		return findings;
+	}
+
+	public void setFindings(String findings) {
+		this.findings = findings;
+	}
+
+	public String getMedicines() {
+		return medicines;
+	}
+
+	public void setMedicines(String medicines) {
+		this.medicines = medicines;
+	}
+	
 }
