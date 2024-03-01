@@ -1,5 +1,6 @@
 package com.rajasekar_t.doctor_patient_portal.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,5 +18,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Intege
 	public List<Appointment> findByPatientId(@Param("id") int id);
 
 	public List<Appointment> findByDoctorId(@Param("id") int id);
+
+	public List<Appointment> findByVisitDateAndBooked(@Param("vdate") LocalDate vdate, @Param("booked") boolean booked);
 
 }
