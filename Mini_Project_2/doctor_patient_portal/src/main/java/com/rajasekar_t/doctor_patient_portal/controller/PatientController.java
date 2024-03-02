@@ -20,13 +20,12 @@ public class PatientController {
 
 	@Autowired
 	PatientRepository patientRepo;
-	
+
 	@Autowired
 	AppointmentRepository appRepo;
-	
+
 	@Autowired
 	PrescriptionRepository prescRepo;
-	
 
 	@GetMapping({ "/login" })
 	public String login() {
@@ -41,20 +40,25 @@ public class PatientController {
 		return "welcome";
 	}
 
-	@PostMapping({ "/bookappointment" })
-	public String appointment_book(@ModelAttribute("appointment") Appointment appointment) {
-		appRepo.save(appointment);
+	@GetMapping({ "/bookappointment" })
+	public String getAppointmentBook() {
 		return "appointment_book";
 	}
 
+	@PostMapping({ "/bookappointment" })
+	public String postAppointmentBook(@ModelAttribute("appointment") Appointment appointment) {
+		appRepo.save(appointment);
+		return "appointment_check";
+	}
+
 	@GetMapping({ "/checkappointment/{id}" })
-	public String appointment_check(@PathVariable("id") int id, Model model) {
-		model.addAttribute("response",appRepo.findByPatientId(id));
+	public String getAppointmentCheck(@PathVariable("id") int id, Model model) {
+		model.addAttribute("response", appRepo.findByPatientId(id));
 		return "appointment_check";
 	}
 
 	@GetMapping({ "/checkprescription/{id}" })
-	public String prescription_check(@PathVariable("id") int id, Model model) {
+	public String getPrescriptionCheck(@PathVariable("id") int id, Model model) {
 		model.addAttribute("response", prescRepo.findByPatientId(id));
 		return "prescription_check";
 	}
