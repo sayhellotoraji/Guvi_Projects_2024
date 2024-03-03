@@ -1,1 +1,67 @@
-Appointment Book
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			width: 50%;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div align="center">
+
+		<h1>Book Appointment</h1>
+		<center>
+			<form role="form" method="post" th:action="@{/patient/bookappointment/save}" th:object="${appointmentForm}">
+				<table>
+					<tr>
+						<td><label>Doctor Name:</label></td>
+						<!--<td><input type="text" th:field="*{doctorId}" /></td>-->
+						<td>
+							<select th:field="*{doctorId}">
+								<option th:each="doctor : ${doctors}" th:value="${doctor.doctor_id}"
+									th:text="${doctor.doctor_name}">
+								</option>
+
+							</select>
+						</td>
+					<tr>
+						<td><label>Patient Id:</label></td>
+						<td><input type="text" th:field="*{patientId}" th:value="${pid}" readonly /></td>
+					</tr>
+
+					<tr>
+						<td><label>Visit Date:</label></td>
+						<td><input type="date" th:field="*{visitDate}" required /></td>
+					</tr>
+					<tr>
+						<td><label>Slot:</label></td>
+						<!--<td><input type="text" th:field="*{slot}" /></td>-->
+						<td>
+							<select th:field="*{slot}">
+								<option th:each="i : ${#numbers.sequence(1, 24)}" th:value="${i}" th:text="${i}">
+								</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label>Confirm Slot:</label></td>
+						<!--<td><input type="text" th:field="*{booked}" th:value="TRUE" th:text="TRUE" /></td>-->
+						<td><input type="checkbox" th:field="*{booked}" value="Confirm" required />Confirm</td>
+					</tr>
+				</table>
+				<br />
+				<input type="submit" value="Book"></input>
+			</form>
+		</center>
+	</div>
+</body>
+
+</html>

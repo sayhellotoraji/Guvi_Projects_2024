@@ -96,7 +96,7 @@ CREATE TABLE appointment (
     appointment_patient_id INT,
     visit_date DATE,
 	slot INT,
-	booked BOOLEAN DEFAULT FALSE,
+	booked BOOLEAN DEFAULT TRUE,
 	CONSTRAINT slot_ck CHECK(slot BETWEEN 1 AND 24),
 #     CONSTRAINT availability_ck CHECK(availability <> TRUE),
     PRIMARY KEY (appointment_id),
@@ -130,8 +130,8 @@ CREATE TABLE prescription (
     prescription_patient_id INT,
     issued_date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     findings VARCHAR(200),
-    medicines JSON,
-    # medicines VARCHAR(1000),
+    # medicines JSON,
+    medicines VARCHAR(1000),
     PRIMARY KEY (prescription_id),
     FOREIGN KEY (prescription_doctor_id)
         REFERENCES doctor (doctor_id),
@@ -139,8 +139,11 @@ CREATE TABLE prescription (
         REFERENCES patient (patient_id)
 );
 
-INSERT INTO prescription(prescription_doctor_id, prescription_patient_id, findings, medicines)
-VALUES(1, 1, 'Cold & Fever', '{"medicines":{"dexilant":
-{"qty":3,"morning": 1, "afternoon":0, "night": 0}}}'); 
+# INSERT INTO prescription(prescription_doctor_id, prescription_patient_id, findings, medicines)
+# VALUES(1, 1, 'Cold & Fever', '{"medicines":{"dexilant":
+# {"qty":3,"morning": 1, "afternoon":0, "night": 0}}}'); 
 
+
+INSERT INTO prescription(prescription_doctor_id, prescription_patient_id, findings, medicines)
+VALUES(1, 1, 'Cold & Fever', 'Dolo: 1-1-1, Cetrizine: 1-0-1'); 
 SELECT * FROM prescription;

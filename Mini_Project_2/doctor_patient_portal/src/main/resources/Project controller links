@@ -1,8 +1,30 @@
 Doctor
-http://localhost:8082/doctor/login
-http://localhost:8082/doctor/Maha
 
+GET Methods:
+http://localhost:8082/doctor/login
+http://localhost:8082/doctor/{docId}
+http://localhost:8082/doctor/checkappointment/{docId}
+http://localhost:8082/doctor/cancelappointment/{appId}
+http://localhost:8082/doctor/checkprescription/{patientId}
+http://localhost:8082/doctor/issueprescription
+http://localhost:8082/doctor/modifyprescription/{prescId}
+
+POST Methods:
+http://localhost:8082/doctor/cancelappointment
+http://localhost:8082/doctor/issueprescription
+http://localhost:8082/doctor/modifyprescription
+
+------------------------------------------------------------------
 
 Patient
+
+GET Methods:
 http://localhost:8082/patient/login
-http://localhost:8082/patient/Raja
+http://localhost:8082/patient/{patientId}
+http://localhost:8082/patient/bookappointment
+http://localhost:8082/patient/checkappointment/{patientId}
+http://localhost:8082/patient/checkprescription/{patientId}
+
+
+POST Methods:
+http://localhost:8082/patient/bookappointment

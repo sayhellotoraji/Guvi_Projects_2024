@@ -1,1 +1,41 @@
-Prescription Check
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			width: 50%;
+		}
+	</style>
+</head>
+
+<body>
+	<!--<a th:href="">Back to Home</a>-->
+	<p th:text="'Patient ID:   '+${id}" />
+	<p th:text="'Patient Name: '+${name}" />
+	<center>
+		<h1>Prescriptions</h1>
+		<table>
+			<thead>
+				<td>Prescription ID</td>
+				<td>Doctor ID</td>
+				<td>Issued Date and Time</td>
+				<td>Findings</td>
+				<td>Medicine</td>
+			</thead>
+			<tr th:each="presc : ${prescriptions}">
+				<td th:text="${presc.prescription_id}"></td>
+				<td th:text="${presc.doctorId}"></td>
+				<td th:text="${presc.issuedDateTime}"></td>
+				<td th:text="${presc.findings}"></td>
+				<td th:text="${presc.medicines}"></td>
+			</tr>
+		</table>
+	</center>
+</body>
+
+</html>

@@ -1,1 +1,41 @@
-Appointment Check
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			width: 50%;
+		}
+	</style>
+</head>
+
+<body>
+	<!--<a th:href="">Back to Home</a>-->
+	<p th:text="'Patient ID:   '+${id}" />
+	<p th:text="'Patient Name: '+${name}" />
+	<center>
+		<h1>Appointments</h1>
+
+		<table>
+			<thead>
+				<td>Appointment ID</td>
+				<td>Doctor ID</td>
+				<td>Visit Date</td>
+				<td>Slot</td>
+			</thead>
+			<tr th:each="app : ${appointments}">
+				<td th:text="${app.appointment_id}"></td>
+				<td th:text="${app.doctorId}"></td>
+				<td th:text="${app.visitDate}"></td>
+				<td th:text="${app.slot}"></td>
+
+			</tr>
+		</table>
+	</center>
+</body>
+
+</html>

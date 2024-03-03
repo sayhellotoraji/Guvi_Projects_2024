@@ -33,10 +33,10 @@ public class DoctorController {
 		return "login";
 	}
 
-	@GetMapping({ "/{id}" })
-	public String welcome(@PathVariable("id") int id, Model model) {
-		String name = docRepo.findById(id).get().getDoctor_name();
-		model.addAttribute("id", id);
+	@GetMapping({ "/{docId}" })
+	public String welcome(@PathVariable("docId") int docId, Model model) {
+		String name = docRepo.findById(docId).get().getDoctor_name();
+		model.addAttribute("id", docId);
 		model.addAttribute("name", name);
 		return "welcome";
 	}
@@ -44,15 +44,15 @@ public class DoctorController {
 	/*****************************************************************/
 	// Appointment controllers
 
-	@GetMapping({ "/checkappointment/{id}" })
-	public String getAppointmentCheck(@PathVariable("id") int id, Model model) {
-		model.addAttribute("response", appRepo.findByDoctorId(id));
+	@GetMapping({ "/checkappointment/{docId}" })
+	public String getAppointmentCheck(@PathVariable("docId") int docId, Model model) {
+		model.addAttribute("response", appRepo.findByDoctorId(docId));
 		return "appointment_check";
 	}
 
-	@GetMapping({ "/cancelappointment/{aid}" })
-	public String getAppointmentCancel(@PathVariable("aid") int aid, Model model) {
-		model.addAttribute("response", appRepo.findById(aid));
+	@GetMapping({ "/cancelappointment/{appId}" })
+	public String getAppointmentCancel(@PathVariable("appId") int appId, Model model) {
+		model.addAttribute("response", appRepo.findById(appId));
 		return "appointment_cancel";
 	}
 
@@ -65,9 +65,9 @@ public class DoctorController {
 	/*****************************************************************/
 	// Prescription Controllers
 
-	@GetMapping({ "/checkprescription/{pid}" })
-	public String getPrescriptionCheck(@PathVariable("pid") int pid, Model model) {
-		model.addAttribute("response", prescRepo.findByPatientId(pid));
+	@GetMapping({ "/checkprescription/{patientId}" })
+	public String getPrescriptionCheck(@PathVariable("patientId") int patientId, Model model) {
+		model.addAttribute("response", prescRepo.findByPatientId(patientId));
 		return "prescription_check";
 	}
 
@@ -82,9 +82,9 @@ public class DoctorController {
 		return "prescription_check";
 	}
 
-	@GetMapping({ "/modifyprescription/{presc_id}" })
-	public String getPrescriptionModify(@PathVariable("presc_id") int presc_id, Model model) {
-		model.addAttribute("response", prescRepo.findById(presc_id));
+	@GetMapping({ "/modifyprescription/{prescId}" })
+	public String getPrescriptionModify(@PathVariable("prescId") int prescId, Model model) {
+		model.addAttribute("response", prescRepo.findById(prescId));
 		return "prescription_modify";
 	}
 
@@ -93,5 +93,4 @@ public class DoctorController {
 		prescRepo.save(prescription);
 		return "prescription_check";
 	}
-
 }
