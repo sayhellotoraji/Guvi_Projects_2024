@@ -11,9 +11,15 @@
 		td {
 			border: 1px solid black;
 			border-collapse: collapse;
-			width: 80%;
+			width: 90%;
 			text-align: center;
 			table-layout: fixed;
+			
+		}
+		
+		button{
+			padding: 5px;
+			margin-right: 5px;
 		}
 
 
@@ -53,12 +59,19 @@
 					</button> </td>
 
 				<td> <button style="background-color:green; "><a
-							th:href="@{../issueprescription/{id}(id=${app.patientId})}">Issue</a>
+							th:href="@{../issueprescription/{id}(id=${app.patientId})}">Issue Medicine</a>
 					</button> </td>
 
 				<td> <button style="background-color: blue; "><a
-							th:href="@{../medicalhistory/{id}(id=${app.patientId})}">History</a>
-					</button> </td>
+							th:href="@{../medicalhistory/{id}(id=${app.appointment_id})}">History</a>
+					</button>
+					<button style="background-color: darkmagenta; "><a
+							th:href="@{../updatemedicalhistory/{id}(id=${app.appointment_id})}">Update</a>
+					</button>
+				</td>
+				<!--<td> <button style="background-color: blue; "><a
+							th:href="@{../updatemedicalhistory/{id}(id=${app.appointment_id})}">Update - History</a>
+					</button> </td>-->
 
 			</tr>
 		</table>

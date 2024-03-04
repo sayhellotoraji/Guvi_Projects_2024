@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Issue Prescription</title>
+	<title>Update Patient Record</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 </head>
@@ -15,38 +15,30 @@
 
 	<div align="center">
 
-		<h1>Issue Prescription</h1>
+		<h1>Update Patient Medical History</h1>
 
 		<center>
 
-			<form role="form" method="post" th:action="@{/doctor/issueprescription/save}"
-				th:object="${prescriptionForm}">
+			<form role="form" method="post" th:action="@{/doctor/updatemedicalhistory/save}" th:object="${history}">
 				<table>
-					<tr>
+					<!--					<tr>
 						<td><label>Doctor ID:</label></td>
 						<td><input type="text" th:field="*{doctorId}" readonly /></td>
 					</tr>
+					-->
 					<tr>
 						<td><label>Patient ID:</label></td>
 						<td><input type="text" th:field="*{patientId}" readonly /></td>
 					</tr>
 					<tr>
 						<!--<td><label>Issued Date and Time:</label></td>-->
-						<td><input type="datetime" th:field="*{issuedDateTime}" hidden /></td>
+						<td><input type="date" th:field="*{diagnosis_date}" hidden /></td>
 					</tr>
 
 					<tr>
-						<td><label>Findings:</label></td>
+						<td><label>Medical Condition:</label></td>
 						<td>
-							<textarea rows="5" cols="25" th:field="*{findings}" required>
-            				</textarea>
-						</td>
-					</tr>
-
-					<tr>
-						<td><label>Medicines:</label></td>
-						<td>
-							<textarea rows="5" cols="25" th:field="*{medicines}" required>
+							<textarea rows="5" cols="25" th:field="*{medical_condition}" required>
             				</textarea>
 						</td>
 					</tr>
@@ -54,7 +46,7 @@
 
 				</table>
 				<br />
-				<input type="submit" value="Issue"></input>
+				<input type="submit" value="Update Patient Record"></input>
 
 			</form>
 		</center>

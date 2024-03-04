@@ -131,7 +131,7 @@ public class PatientController {
 	public String getMedicalHistory(@PathVariable("patientId") int patientId, Model model) {
 		model.addAttribute("patient", patientRepo.findById(patientId).get());
 
-		Medical_History medHistory = histRepo.findById(patientId).get();
+		List<Medical_History> medHistory = histRepo.findByPatientId(patientId);
 		model.addAttribute("history", medHistory);
 
 		return "medical_history";

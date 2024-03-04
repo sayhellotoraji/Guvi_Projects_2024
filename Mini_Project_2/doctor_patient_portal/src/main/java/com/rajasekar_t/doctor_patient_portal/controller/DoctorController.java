@@ -2,6 +2,7 @@ package com.rajasekar_t.doctor_patient_portal.controller;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -141,7 +142,6 @@ public class DoctorController {
 		return "redirect:/doctor/" + prescription.getDoctorId();
 	}
 
-	
 	@GetMapping({ "deleteprescription/{prescId}" })
 	public String getPrescriptionRemove(@PathVariable("prescId") int prescId, Model model) {
 		System.out.println("Executed");
@@ -162,9 +162,33 @@ public class DoctorController {
 	public String getDocMedicalHistory(@PathVariable("patientId") int patientId, Model model) {
 		model.addAttribute("patient", patientRepo.findById(patientId).get());
 
-		Medical_History medHistory = histRepo.findById(patientId).get();
+		List<Medical_History> medHistory = histRepo.findByPatientId(patientId);
 		model.addAttribute("history", medHistory);
 
 		return "medical_history";
+	}
+
+	@GetMapping({ "updatemedicalhistory/{appId}" })
+	public String getMedicalHistory(@PathVariable("appId") int appId, Model model) {
+		Medical_History hist = new Medical_History();
+		Appointment app = appRepo.findById(appId).get();
+		hist.setPatientId(app.getPatientId());
+		model.addAttribute("history", hist);
+
+		int patientId = app.getPatientId();
+		model.addAttribute("id", patientId);
+
+		String name = patientRepo.findById(patientId).get().getPatient_name();
+		model.addAttribute("name", name);
+
+		return "doc_medical_history";
+	}
+
+	@PostMapping({ "updatemedicalhistory/save" })
+	public String updateMedicalHistory(@ModelAttribute Medical_History medHis) {
+		medHis.setDiagnosis_date(LocalDate.now());
+		histRepo.save(medHis);
+		int patientId = medHis.getPatientId();
+		return "redirect:/doctor/" + patientId;
 	}
 }
