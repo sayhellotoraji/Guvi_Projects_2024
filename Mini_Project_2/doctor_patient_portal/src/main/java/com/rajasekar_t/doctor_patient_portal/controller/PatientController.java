@@ -80,6 +80,7 @@ public class PatientController {
 
 		model.addAttribute("appointmentForm", appointment);
 		model.addAttribute("doctors", docRepo.findAll());
+		model.addAttribute("patient", patientRepo.findById(patientId).get());
 		// Need to implement - show only available slots
 		// List<Appointment> slot_booked =
 		// appRepo.findByVisitDateAndBooked(appointment.getVisitDate(), true);

@@ -15,9 +15,13 @@
 </head>
 
 <body>
+	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
 	<div align="center">
 
+
 		<h1>Book Appointment</h1>
+		<p th:text="'Patient ID:   '+${patient.patient_id}" />
+		<p th:text="'Patient Name: '+${patient.patient_name}" />
 		<center>
 			<form role="form" method="post" th:action="@{/patient/bookappointment/save}" th:object="${appointmentForm}">
 				<table>

@@ -17,7 +17,8 @@
 	<!--<a th:href="">Back to Home</a>-->
 	<p th:text="'Patient ID:   '+${patient.patient_id}" />
 	<p th:text="'Patient Name: '+${patient.patient_name}" />
-
+	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
+	
 	<center>
 		<h1>Medical History</h1>
 		<table>
