@@ -35,10 +35,10 @@
 
 		<table>
 			<thead>
-				<td>Appointment ID</td>
-				<td>Doctor ID</td>
-				<td>Visit Date</td>
-				<td>Slot</td>
+				<th>Appointment ID</th>
+				<th>Doctor ID</th>
+				<th>Visit Date</th>
+				<th>Slot</th>
 			</thead>
 			<tr th:each="app : ${appointments}">
 				<td th:text="${app.appointment_id}"></td>

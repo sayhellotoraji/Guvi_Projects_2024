@@ -8,11 +8,12 @@
 </head>
 
 <body>
-	<div align="center">
 
-		<p th:text="'Patient ID:   '+${id}" />
-		<p th:text="'Patient Name: '+${name}" />
-		<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
+	<p th:text="'Patient ID:   '+${id}" />
+	<p th:text="'Patient Name: '+${name}" />
+	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
+
+	<div align="center">
 
 		<h1>Issue Prescription</h1>
 
@@ -23,11 +24,11 @@
 				<table>
 					<tr>
 						<td><label>Doctor ID:</label></td>
-						<td><input type="text" th:field="*{doctorId}" readonly/></td>
+						<td><input type="text" th:field="*{doctorId}" readonly /></td>
 					</tr>
 					<tr>
 						<td><label>Patient ID:</label></td>
-						<td><input type="text" th:field="*{patientId}" readonly/></td>
+						<td><input type="text" th:field="*{patientId}" readonly /></td>
 					</tr>
 					<tr>
 						<!--<td><label>Issued Date and Time:</label></td>-->
@@ -53,7 +54,7 @@
 
 				</table>
 				<br />
-				<input type="submit" value="Register"></input>
+				<input type="submit" value="Issue"></input>
 
 			</form>
 		</center>

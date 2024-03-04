@@ -9,11 +9,11 @@
 <body>
 	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Appointments</button>
 
-	<h3 th:text="'Delete Appointment with ID:   '+${appointment.appointment_id}" />
 
 	<center>
-		<form method="post" th:object="${cancelAppointment}"
-			style="width: 100%">
+		<h3 th:text="'Delete Appointment with ID:   '+${appointment.appointment_id}" />
+
+		<form method="post" style="width: 100%">
 			<input type="submit" value="Confirm Cancellation" />
 		</form>
 	</center>

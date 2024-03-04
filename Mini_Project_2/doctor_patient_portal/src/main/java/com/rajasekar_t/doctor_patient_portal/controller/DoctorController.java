@@ -30,7 +30,7 @@ public class DoctorController {
 
 	@Autowired
 	DoctorRepository docRepo;
-	
+
 	@Autowired
 	PatientRepository patientRepo;
 	@Autowired
@@ -39,7 +39,6 @@ public class DoctorController {
 	PrescriptionRepository prescRepo;
 	@Autowired
 	MedicalHistoryRepository histRepo;
-	
 
 	/*****************************************************************/
 	// Login & Welcome Controllers
@@ -62,11 +61,11 @@ public class DoctorController {
 	@GetMapping({ "checkappointment/{docId}" })
 	public String getAppointmentCheck(@PathVariable("docId") int docId, Model model) {
 		model.addAttribute("appointments", appRepo.findByDoctorId(docId));
-		
+
 		String name = docRepo.findById(docId).get().getDoctor_name();
 		model.addAttribute("id", docId);
 		model.addAttribute("name", name);
-		
+
 		return "doc_appointment_check";
 	}
 
@@ -76,25 +75,15 @@ public class DoctorController {
 		return "doc_appointment_cancel";
 	}
 
-	// Redirect either from the controller on successful request
-	// or from thymeleaf 
-	// Dont do both - will cause error
 	@PostMapping({ "cancelappointment/{appId}" })
 	public String postAppointmentCancel(@PathVariable("appId") int appId) {
 		int docId = appRepo.findById(appId).get().getDoctorId();
 		appRepo.deleteById(appId);
-		return "redirect:/doctor/"+docId;
-
+		return "redirect:/doctor/" + docId;
 	}
 
 	/*****************************************************************/
-	// Prescription Controllers
-// Not required at Doctor' s view
-//	@GetMapping({ "checkprescription/{patientId}" })
-//	public String getPrescriptionCheck(@PathVariable("patientId") int patientId, Model model) {
-//		model.addAttribute("response", prescRepo.findByPatientId(patientId));
-//		return "prescription_check";
-//	}
+	// Prescription controllers
 
 	@GetMapping({ "issueprescription/{appId}" })
 	public String getPrescriptionIssue(@PathVariable("appId") int appId, Model model) {
@@ -104,7 +93,7 @@ public class DoctorController {
 		prescription.setPatientId(appId);
 		prescription.setIssuedDateTime(LocalDateTime.now());
 		model.addAttribute("prescriptionForm", prescription);
-		
+
 		int patientId = app.getPatientId();
 		model.addAttribute("id", patientId);
 		String name = patientRepo.findById(patientId).get().getPatient_name();
@@ -115,37 +104,60 @@ public class DoctorController {
 	@PostMapping({ "issueprescription/save" })
 	public String postPrescriptionIssue(@ModelAttribute Prescription prescription) {
 		prescRepo.save(prescription);
-		return "redirect:/doctor/"+prescription.getDoctorId();
+		return "redirect:/doctor/" + prescription.getDoctorId();
 	}
-	
+
 	@GetMapping({ "issuedprescription/{patientId}" })
 	public String getPrescriptionIssued(@PathVariable("patientId") int patientId, Model model) {
 		String name = patientRepo.findById(patientId).get().getPatient_name();
 		List<Prescription> prescriptions = prescRepo.findByPatientId(patientId);
-		
+
 		model.addAttribute("id", patientId);
 		model.addAttribute("name", name);
-		
+
 		model.addAttribute("prescriptions", prescriptions);
-		
+
 		return "doc_prescription_check";
 	}
 
-	/*****************************************************************/
-	
 	@GetMapping({ "modifyprescription/{prescId}" })
 	public String getPrescriptionModify(@PathVariable("prescId") int prescId, Model model) {
-		model.addAttribute("response", prescRepo.findById(prescId));
-		return "prescription_modify";
+		int patientId = prescRepo.findById(prescId).get().getPatientId();
+		String name = patientRepo.findById(patientId).get().getPatient_name();
+
+		Prescription prescription = prescRepo.findById(prescId).get();
+		prescription.setPrescription_id(prescId);
+		prescription.setIssuedDateTime(LocalDateTime.now());
+
+		model.addAttribute("modifyPrescriptionForm", prescription);
+		model.addAttribute("id", patientId);
+		model.addAttribute("name", name);
+		return "doc_prescription_modify";
 	}
 
 	@PostMapping({ "modifyprescription/save" })
 	public String postPrescriptionModify(@ModelAttribute("prescription") Prescription prescription) {
 		prescRepo.save(prescription);
-		return "prescription_check";
+		return "redirect:/doctor/" + prescription.getDoctorId();
 	}
 
-//****************************************************************
+	
+	@GetMapping({ "deleteprescription/{prescId}" })
+	public String getPrescriptionRemove(@PathVariable("prescId") int prescId, Model model) {
+		System.out.println("Executed");
+		model.addAttribute("prescription", prescRepo.findById(prescId).get());
+		return "doc_prescription_remove";
+	}
+
+	@PostMapping({ "deleteprescription/{prescId}" })
+	public String postPrescriptionRemove(@PathVariable("prescId") int prescId) {
+		int docId = prescRepo.findById(prescId).get().getDoctorId();
+		prescRepo.deleteById(prescId);
+		return "redirect:/doctor/" + docId;
+	}
+//	************************************************************
+
+	// Medical History - Controllers
 	@GetMapping({ "medicalhistory/{patientId}" })
 	public String getDocMedicalHistory(@PathVariable("patientId") int patientId, Model model) {
 		model.addAttribute("patient", patientRepo.findById(patientId).get());

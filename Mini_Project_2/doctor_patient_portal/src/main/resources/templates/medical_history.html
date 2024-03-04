@@ -33,9 +33,9 @@
 		<h1>Medical History</h1>
 		<table>
 			<thead>
-				<td>Med-History ID</td>
-				<td>Diagnosis Date</td>
-				<td>Medical Condition</td>
+				<th>Med-History ID</th>
+				<th>Diagnosis Date</th>
+				<th>Medical Condition</th>
 			</thead>
 			<tr th:each="hist : ${history}">
 				<td th:text="${hist.history_id}"></td>
