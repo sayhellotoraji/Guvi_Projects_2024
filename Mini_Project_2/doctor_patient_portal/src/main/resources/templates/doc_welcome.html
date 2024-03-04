@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Welcome, Doctor</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+	<center>
+		<h1>Doctor Portal</h1>
+	</center>
+
+	<p th:text="'Doctor ID:   '+${id}" />
+	<p th:text="'Doctor Name: '+${name}" />
+
+	<a th:href="@{checkappointment/{id}(id=${id})}">My Appointments</a>
+	<a th:href="@{issuedprescription/{id}(id=${id})}">Issued Prescriptions</a>
+
+</body>
+
+</html>

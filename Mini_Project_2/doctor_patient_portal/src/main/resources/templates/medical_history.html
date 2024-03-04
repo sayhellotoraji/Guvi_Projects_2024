@@ -2,13 +2,23 @@
 <html>
 
 <head>
+	  <title>Medical History</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 	<style>
 		table,
 		th,
 		td {
 			border: 1px solid black;
 			border-collapse: collapse;
-			width: 50%;
+			width: 80%;
+			text-align: center;
+			table-layout: fixed;
+		}
+
+		a {
+			text-decoration: none;
+			color: white;
 		}
 	</style>
 </head>
@@ -18,7 +28,7 @@
 	<p th:text="'Patient ID:   '+${patient.patient_id}" />
 	<p th:text="'Patient Name: '+${patient.patient_name}" />
 	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
-	
+
 	<center>
 		<h1>Medical History</h1>
 		<table>

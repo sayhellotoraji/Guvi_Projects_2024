@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Doctor Cancel Appointment</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			width: 80%;
+			text-align: center;
+			table-layout: fixed;
+		}
+
+
+		a {
+			text-decoration: none;
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<!--<a th:href="">Back to Home</a>-->
+	<p th:text="'Doctor ID:   '+${id}" />
+	<p th:text="'Doctor Name: '+${name}" />
+	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
+
+	<center>
+
+		<h1>Appointments</h1>
+
+		<table>
+			<thead>
+				<th>Appointment ID</th>
+				<th>Patient ID</th>
+				<th>Visit Date</th>
+				<th>Slot</th>
+				<th colspan="3">Action</th>
+			</thead>
+			<tr th:each="app : ${appointments}">
+				<td th:text="${app.appointment_id}"></td>
+				<td th:text="${app.patientId}"></td>
+				<td th:text="${app.visitDate}"></td>
+				<td th:text="${app.slot}"></td>
+				<!-- ../ to naviage to previous directory: here, it is doctor-->
+				<td> <button style="background-color: red; "><a
+							th:href="@{../cancelappointment/{id}(id=${app.appointment_id})}">Cancel</a>
+					</button> </td>
+
+				<td> <button style="background-color:green; "><a
+							th:href="@{../issueprescription/{id}(id=${app.patientId})}">Issue</a>
+					</button> </td>
+
+				<td> <button style="background-color: blue; "><a
+							th:href="@{../medicalhistory/{id}(id=${app.patientId})}">History</a>
+					</button> </td>
+
+			</tr>
+		</table>
+	</center>
+</body>
+
+</html>

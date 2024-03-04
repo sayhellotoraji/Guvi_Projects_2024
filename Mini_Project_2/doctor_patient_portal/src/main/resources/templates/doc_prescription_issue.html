@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Issue Prescription</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+	<div align="center">
+
+		<p th:text="'Patient ID:   '+${id}" />
+		<p th:text="'Patient Name: '+${name}" />
+		<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
+
+		<h1>Issue Prescription</h1>
+
+		<center>
+
+			<form role="form" method="post" th:action="@{/doctor/issueprescription/save}"
+				th:object="${prescriptionForm}">
+				<table>
+					<tr>
+						<td><label>Doctor ID:</label></td>
+						<td><input type="text" th:field="*{doctorId}" readonly/></td>
+					</tr>
+					<tr>
+						<td><label>Patient ID:</label></td>
+						<td><input type="text" th:field="*{patientId}" readonly/></td>
+					</tr>
+					<tr>
+						<!--<td><label>Issued Date and Time:</label></td>-->
+						<td><input type="datetime" th:field="*{issuedDateTime}" hidden /></td>
+					</tr>
+
+					<tr>
+						<td><label>Findings:</label></td>
+						<td>
+							<textarea rows="5" cols="25" th:field="*{findings}">
+            				</textarea>
+						</td>
+					</tr>
+
+					<tr>
+						<td><label>Medicines:</label></td>
+						<td>
+							<textarea rows="5" cols="25" th:field="*{medicines}">
+            				</textarea>
+						</td>
+					</tr>
+
+
+				</table>
+				<br />
+				<input type="submit" value="Register"></input>
+
+			</form>
+		</center>
+
+
+	</div>
+</body>
+
+</html>
