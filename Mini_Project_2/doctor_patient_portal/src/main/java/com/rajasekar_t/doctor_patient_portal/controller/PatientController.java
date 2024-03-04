@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rajasekar_t.doctor_patient_portal.model.Appointment;
 import com.rajasekar_t.doctor_patient_portal.model.Doctor;
+import com.rajasekar_t.doctor_patient_portal.model.Medical_History;
 import com.rajasekar_t.doctor_patient_portal.model.Patient;
 import com.rajasekar_t.doctor_patient_portal.repository.AppointmentRepository;
 import com.rajasekar_t.doctor_patient_portal.repository.DoctorRepository;
+import com.rajasekar_t.doctor_patient_portal.repository.MedicalHistoryRepository;
 import com.rajasekar_t.doctor_patient_portal.repository.PatientRepository;
 import com.rajasekar_t.doctor_patient_portal.repository.PrescriptionRepository;
 
@@ -37,6 +39,9 @@ public class PatientController {
 
 	@Autowired
 	DoctorRepository docRepo;
+	
+	@Autowired
+	MedicalHistoryRepository histRepo;
 
 	@GetMapping({ "register" })
 	public String register(Model model) {
@@ -110,7 +115,7 @@ public class PatientController {
 		return "appointment_check";
 	}
 
-	@GetMapping({ "/checkprescription/{patientId}" })
+	@GetMapping({ "checkprescription/{patientId}" })
 	public String getPrescriptionCheck(@PathVariable("patientId") int patientId, Model model) {
 		model.addAttribute("prescriptions", prescRepo.findByPatientId(patientId));
 		
@@ -119,4 +124,17 @@ public class PatientController {
 		model.addAttribute("name", name);
 		return "prescription_check";
 	}
+	
+
+	@GetMapping({ "medicalhistory/{patientId}" })
+	public String getMedicalHistory(@PathVariable("patientId") int patientId, Model model) {
+		model.addAttribute("patient", patientRepo.findById(patientId).get());
+
+		Medical_History medHistory = histRepo.findById(patientId).get();
+		model.addAttribute("history", medHistory);
+
+		return "medical_history";
+	}
+	
+	
 }
