@@ -109,6 +109,9 @@ CREATE TABLE appointment (
 INSERT INTO appointment(appointment_doctor_id, appointment_patient_id, visit_date, slot, booked)
 VALUES(1, 1, '2024-02-24', 1, TRUE);
 
+INSERT INTO appointment(appointment_doctor_id, appointment_patient_id, visit_date, slot, booked)
+VALUES(1, 1, '2024-02-24', 5, TRUE);
+
 # While booking a slot-> SET booked = true,
 # Check for available slots using repository layer method - In Java
 SELECT visit_date, slot FROM appointment WHERE booked=TRUE;
