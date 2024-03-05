@@ -4,7 +4,7 @@
 <head>
 	<title>Book Appointment</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+	<meta http-equiv="refresh" content="200" />
 	<style>
 		table,
 		th,
@@ -50,19 +50,19 @@
 					</tr>
 					<tr>
 						<td><label>Slot - Time </label>
-							<p>Slot 1 - 12 From 10 am - 1 pm</p>
-							<p>Slot 12 - 24 From 2 pm - 5 pm</p>
+							<p>Slot 1 - 12: From 10 am - 1 pm</p>
+							<p>Slot 12 - 24: From 2 pm - 5 pm</p>
 						</td>
 						<!--<td><input type="text" th:field="*{slot}" /></td>-->
 						<td>
-
+							<p>Available Slots:</p>
 							<select id="selectSlot" th:field="*{slot}">
 
 								<!--<option> Choose Slot No:</option>-->
 
-								<option th:each="i : ${#numbers.sequence(1, 24)}" th:value="${i}"
-									th:text="'Slot '+${i}">
-								</option>
+								<!--<option th:each="i : ${#numbers.sequence(1, 24)}" th:value="${i}"
+									th:text="+${i}">
+								</option>-->
 
 								<!--<option th:each="i : ${slots}" th:value="${i}" th:text="${i}">
 								</option>-->
@@ -113,19 +113,20 @@
 			console.log(available_slots);
 
 
-			/*
-						// Dynamically Add Slot options
-						var select = document.getElementById("selecSlot");
-						var options = available_slots;
+			//***********************
+			// Dynamically Add Slot options
+			var select = document.getElementById("selectSlot");
+			var options = available_slots;
+
+			// Optional: Clear all existing options first:
+			select.innerHTML = "";
+			// Populate list with options:
+			for (var i = 0; i < options.length; i++) {
+				var opt = options[i];
+				select.innerHTML += "<option value=\"" + opt + "\">" + "Available Slot - "+opt + "</option>";
+
+			}
 			
-						// Optional: Clear all existing options first:
-						select.innerHTML = "";
-						// Populate list with options:
-						for (var i = 0; i < options.length; i++) {
-							var opt = options[i];
-							select.innerHTML += "<option value=\"" + opt + "\">" + opt + "</option>";
-						}
-					*/
 		}
 
 
