@@ -19,6 +19,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Intege
 
 	public List<Appointment> findByDoctorId(@Param("id") int id);
 
-	public List<Appointment> findByVisitDateAndBooked(@Param("vdate") LocalDate vdate, @Param("booked") boolean booked);
+	public List<Appointment> findByDoctorIdAndVisitDate(@Param("id") int id, @Param("vdate") LocalDate vdate);
 
 }
