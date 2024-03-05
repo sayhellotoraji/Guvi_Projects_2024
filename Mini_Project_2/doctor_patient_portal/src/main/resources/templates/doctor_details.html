@@ -25,23 +25,24 @@
 
 <body>
 	<!--<a th:href="">Back to Home</a>-->
-	<p th:text="'Patient ID:   '+${patient.patient_id}" />
-	<p th:text="'Patient Name: '+${patient.patient_name}" />
+
 	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
 
 	<center>
-		<h1>Medical History</h1>
-		<h1 th:text="'Patient Name: '+${patient.patient_name}" />
+		<h1>Doctor Details</h1>
+
 		<table>
 			<thead>
-				<th>Med-History ID</th>
-				<th>Diagnosis Date</th>
-				<th>Medical Condition</th>
+				<th>Doctor ID</th>
+				<th>Doctor Name</th>
+				<th>Specialization</th>
+				<th>Email</th>
 			</thead>
-			<tr th:each="hist : ${history}">
-				<td th:text="${hist.history_id}"></td>
-				<td th:text="${hist.diagnosis_date}"></td>
-				<td th:text="${hist.medical_condition}"></td>
+			<tr th:each="doc : ${doctors}">
+				<td th:text="${doc.doctor_id}"></td>
+				<td th:text="${doc.doctor_name}"></td>
+				<td th:text="${doc.specialization}"></td>
+				<td th:text="${doc.email}"></td>
 			</tr>
 		</table>
 	</center>

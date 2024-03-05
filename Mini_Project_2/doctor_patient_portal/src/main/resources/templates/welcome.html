@@ -12,7 +12,8 @@
 
 	<p th:text="'Patient ID:   '+${id}" />
 	<p th:text="'Patient Name: '+${name}" />
-
+	
+	<a th:href="@{doctordetails}">Doctor Details</a>
 	<a th:href="@{bookappointment/{id}(id=${id})}">Book Appointment</a>
 	<a th:href="@{checkappointment/{id}(id=${id})}">My Appointments</a>
 	<a th:href="@{checkprescription/{id}(id=${id})}">My Prescriptions</a>

@@ -38,7 +38,7 @@
 
 	<center>
 
-		<h1>Appointments</h1>
+		<h1 th:text="'Dr. '+${name}+', Appointments'" />
 
 		<table>
 			<thead>
@@ -63,10 +63,10 @@
 					</button> </td>
 
 				<td> <button style="background-color: blue; "><a
-							th:href="@{../medicalhistory/{id}(id=${app.appointment_id})}">History</a>
+							th:href="@{../medicalhistory/{id}(id=${app.patientId})}">History</a>
 					</button>
 					<button style="background-color: darkmagenta; "><a
-							th:href="@{../updatemedicalhistory/{id}(id=${app.appointment_id})}">Update</a>
+							th:href="@{../updatemedicalhistory/{id}(id=${app.patientId})}">Update</a>
 					</button>
 				</td>
 				<!--<td> <button style="background-color: blue; "><a

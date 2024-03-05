@@ -49,13 +49,22 @@
 						<td><input type="date" th:field="*{visitDate}" required /></td>
 					</tr>
 					<tr>
-						<td><label>Slot:</label></td>
+						<td><label>Slot - Time  </label>
+						<p>Slot 1 - 12 From 10 am - 1 pm</p>
+						<p>Slot 12 - 24 From 2 pm - 5 pm</p>
+						</td>
 						<!--<td><input type="text" th:field="*{slot}" /></td>-->
 						<td>
+							
 							<select th:field="*{slot}">
-								<option th:each="i : ${#numbers.sequence(1, 24)}" th:value="${i}" th:text="${i}">
+								<option th:each="i : ${#numbers.sequence(1, 24)}" th:value="${i}" th:text="'Slot '+${i}">
 								</option>
+
+								<!--<option th:each="i : ${slots}" th:value="${i}" th:text="${i}">
+								</option>-->
 							</select>
+							<span>15 mins/ slot</span>
+
 						</td>
 					</tr>
 					<tr>
