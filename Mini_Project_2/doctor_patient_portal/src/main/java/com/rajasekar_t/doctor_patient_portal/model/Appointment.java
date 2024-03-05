@@ -15,7 +15,7 @@ import jakarta.validation.constraints.PastOrPresent;
 @Table
 @NamedQuery(name = "Appointment.PatientId", query = "from appointment where patientId =:id")
 @NamedQuery(name = "Appointment.DoctorId", query = "from appointment where doctorId =:id")
-@NamedQuery(name = "Appointment.DateSlot", query = "from appointment where visitDate =:vdate and booked=:booked")
+@NamedQuery(name = "Appointment.DateSlot", query = "from appointment where doctorId =:id and visitDate =:vdate")
 public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
