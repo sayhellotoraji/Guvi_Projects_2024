@@ -105,8 +105,6 @@ public class PatientController {
 		model.addAttribute("doctors", doctors);
 		model.addAttribute("patient", patient);
 
-		// Need to implement - show only available slots
-
 		// ****************************************************
 
 		return "appointment_book";
