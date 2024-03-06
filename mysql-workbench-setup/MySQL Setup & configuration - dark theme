@@ -1,0 +1,28 @@
+MySQL Server & Workbench Installation 
+
+Check mysql version:
+	mysql –version
+
+Installation:
+sudo apt-get install mysql-server
+sudo nala install mysql-server
+
+sudo mysql
+
+create user 'username’@'localhost' identified by 'password';
+
+grant all privileges on *.* to 'username’@'localhost';
+
+cd ~
+cd Downloads
+ls
+sudo nala install ./mysql-workbench-community_8.0.34-1ubuntu22.04_amd64.deb
+ 
+    • Open workbench > Create a new connection >Using username & password > Delete Root connection
+
+Delete mysql from Ubuntu:
+
+  924  sudo apt-get remove --purge 'mysql*'
+  925  sudo apt-get autoremove
+  926  sudo apt-get autoclean
+
