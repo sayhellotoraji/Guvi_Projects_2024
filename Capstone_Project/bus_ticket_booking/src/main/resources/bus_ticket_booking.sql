@@ -53,8 +53,11 @@ SELECT * FROM bus;
 CREATE TABLE booking (
     booking_id INT NOT NULL AUTO_INCREMENT,
     passenger_id INT,
+    passenger_name VARCHAR(24),
     bus_id INT,
+    bus_name VARCHAR(24),
     seat_qty INT,
+    booked_price INT,
     amount INT,
     booked_time DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (booking_id),
@@ -64,7 +67,7 @@ CREATE TABLE booking (
         REFERENCES bus (bus_id)
 );
 
-INSERT INTO booking(passenger_id, bus_id, seat_qty, amount)
-VALUES(1,1,0,0);
+INSERT INTO booking(passenger_id, passenger_name, bus_id, bus_name, seat_qty, booked_price, amount)
+VALUES(1, 'Rajasekar T', 1, 'Mahalakshmi', 0, 350, 0);
 
 SELECT * FROM booking;

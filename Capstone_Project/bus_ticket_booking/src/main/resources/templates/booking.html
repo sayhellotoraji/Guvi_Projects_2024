@@ -26,29 +26,44 @@
 		<p th:text="'Passenger ID:   '+${passengerId}" />
 		<p th:text="'Passenger Name: '+${passengerName}" />
 		<center>
-			<form role="form" method="post" th:action="@{/passenger/save}" th:object="${bookingForm}">
+			<form role="form" method="post" th:action="@{/passenger/booking/save}" th:object="${bookingForm}">
 				<table>
 					<tr>
 						<td>
 							<label>Passenger Id:</label>
 							<input type="text" th:field="*{passengerId}" readonly />
 						</td>
-						
+
+						<td>
+							<label>Passenger Name:</label>
+							<input type="text" th:field="*{passengerName}" readonly />
+						</td>
+
 						<td>
 							<label>Bus Id:</label>
 							<input type="text" th:field="*{busId}" readonly />
 						</td>
+
+						<td>
+							<label>Bus Name:</label>
+							<input type="text" th:field="*{busName}" readonly />
+						</td>
+
 						<td>
 							<label>Seat Qty:</label>
-							<input type="text" th:field="*{seatQty}" required/>
+							<input id="qty" type="text" th:field="*{seatQty}" onkeyup="update()" placeholder="0" required />
 						</td>
+
+						<td>
+							<label>Price:</label>
+							<input id="price" type="text" th:field="*{price}" readonly />
+						</td>
+
 						<td>
 							<label>Amount:</label>
-							<input type="text" th:field="*{amount}" required/>
+							<input id="amount" type="text" th:field="*{amount}" />
 						</td>
-
 					</tr>
-
 				</table>
 				<br />
 				<input type="submit" value="Book"></input>
@@ -56,65 +71,10 @@
 		</center>
 	</div>
 	<script>
-		/*
-				// global variable - declare at top to avoid errors
-				// hoisting didn' t work at times
-		
-				var total_slots = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
-				var booked_slots = [];
-				var available_slots = [];
-		
-				async function getapi(doctor_list_url) {
-					const response = await fetch(doctor_list_url);
-					var fetched_data = await response.json();
-					data = fetched_data;
-				}
-		
-				function performOperation() {
-		
-					// Find booked slots
-					var appointments = data._embedded.appointment;
-					var len = appointments.length;
-		
-					for (var i = 0; i < len; i++) {
-						booked_slots.push(appointments[i].slot);
-					}
-		
-					// Testing 
-					console.log(total_slots);
-					console.log(booked_slots);
-					available_slots = total_slots.filter(x => !booked_slots.includes(x));
-					console.log(available_slots);
-		
-		
-					//***********************
-					// Dynamically Add Slot options
-					var select = document.getElementById("selectSlot");
-					var options = available_slots;
-		
-					// Optional: Clear all existing options first:
-					select.innerHTML = "";
-					// Populate list with options:
-					for (var i = 0; i < options.length; i++) {
-						var opt = options[i];
-						select.innerHTML += "<option value=\"" + opt + "\">" + "Available Slot - "+opt + "</option>";
-		
-					}
-					
-				}
-		
-		
-		
-				// onchange event triggers it
-				function findSlot() {
-					var vdate = document.getElementById("vdate").value;
-					var docId = document.getElementById("appDocId").value;
-		
-					url = 'http://localhost:8082/appointment/search/findByDoctorIdAndVisitDate?id=' + docId + '&vdate=' + vdate;
-					getapi(url).then(() => performOperation());
-				}
-		
-		*/
+		function update() {
+			document.getElementById("amount").value = 
+			document.getElementById("qty").value * document.getElementById("price").value;
+		}
 	</script>
 </body>
 
