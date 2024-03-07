@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Register Passenger</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+	<div align="center">
+		<h1>Passenger Registration</h1>
+
+		<center>
+
+			<form role="form" method="post" th:action="@{register/save}" th:object="${passengerForm}">
+				<table>
+					<tr>
+						<td><label>Passenger Name:</label></td>
+						<td><input type="text" th:field="*{passengerName}" required/></td>
+					</tr>
+
+					<tr>
+						<td><label>E-mail:</label></td>
+						<td><input type="email" th:field="*{email}" required/></td>
+					</tr>
+
+					<tr>
+						<td><label>Mobile No:</label></td>
+						<td><input type="tel" th:field="*{mobile_no}" required/></td>
+					</tr>
+
+					<tr>
+						<td><label>Password:</label></td>
+						<td><input type="password" th:field="*{login_password}" required/></td>
+					</tr>
+				</table>
+				<br />
+				<input type="submit" value="Register"></input>
+
+			</form>
+		</center>
+
+
+	</div>
+</body>
+
+</html>

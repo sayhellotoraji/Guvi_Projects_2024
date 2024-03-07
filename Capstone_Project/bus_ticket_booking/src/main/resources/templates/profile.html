@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Modify Passenger Profile</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+	<p th:text="'Passenger Id:   '+${id}" />
+	<p th:text="'Passenger Name: '+${name}" />
+	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
+
+	<div align="center">
+		<h1>Modify Passenger Profile</h1>
+
+		<center>
+
+			<form role="form" method="post" th:action="@{/passenger/modifyprofile/save}"
+				th:object="${modifyPassengerForm}">
+				<table>
+					<tr>
+						<td><label>Passenger Name:</label></td>
+						<input type="text" th:field="*{passengerId}" hidden />
+						<td><input type="text" th:field="*{passengerName}" /></td>
+					</tr>
+
+					<tr>
+						<td><label>E-mail:</label></td>
+						<td><input type="email" th:field="*{email}" required /></td>
+					</tr>
+
+					<tr>
+						<td><label>Mobile No:</label></td>
+						<td><input type="tel" th:field="*{mobile_no}" required /></td>
+					</tr>
+
+
+					<tr>
+						<td><label>Enter Password to Confirm</label></td>
+						<td><input type="password" th:field="*{login_password}" required /></td>
+					</tr>
+
+
+				</table>
+				<br />
+				<input type="submit" value="Modify"></input>
+
+			</form>
+			
+			<!-- Form 2 for changing password -->
+		</center>
+
+
+	</div>
+</body>
+
+</html>

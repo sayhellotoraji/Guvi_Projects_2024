@@ -17,12 +17,12 @@
 				<table>
 					<tr>
 						<td><label>Patient Name:</label></td>
-						<td><input type="text" th:field="*{patient_name}" /></td>
+						<td><input type="text" th:field="*{patient_name}" required/></td>
 					</tr>
 
 					<tr>
 						<td><label>Date of Birth</label></td>
-						<td><input type="date" th:field="*{dob}" /></td>
+						<td><input type="date" th:field="*{dob}" required/></td>
 					</tr>
 
 					<tr>
@@ -34,23 +34,23 @@
 
 					<tr>
 						<td><label>Mobile No:</label></td>
-						<td><input type="tel" th:field="*{mobile_no}" /></td>
+						<td><input type="tel" th:field="*{mobile_no}" required/></td>
 					</tr>
 
 					<tr>
 						<td><label>Address:</label></td>
-						<td><textarea rows="5" cols="25" th:field="*{address}">
+						<td><textarea rows="5" cols="25" th:field="*{address}" required>
             </textarea></td>
 					</tr>
 
 					<tr>
 						<td><label>E-mail:</label></td>
-						<td><input type="email" th:field="*{email}" /></td>
+						<td><input type="email" th:field="*{email}" required/></td>
 					</tr>
 
 					<tr>
 						<td><label>Password:</label></td>
-						<td><input type="password" th:field="*{login_password}" /></td>
+						<td><input type="password" th:field="*{login_password}" required/></td>
 					</tr>
 				</table>
 				<br />

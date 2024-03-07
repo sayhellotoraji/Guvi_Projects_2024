@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Passenger Portal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+	<center>
+		<h1>Passenger Portal</h1>
+	</center>
+
+	<p th:text="'Passenger ID:   '+${id}" />
+	<p th:text="'Passenger Name: '+${name}" />
+
+
+	<!--Need to modify the links -->
+	<a th:href="@{/passenger/modifyprofile/{id}(id=${id})}">My Profile</a>
+		
+	<!--This wont work because it is tied up with login page 
+		<a th:href="@{modfifyprofile/{id}(id=${id})}">My Profile</a>
+		-->
+	<a th:href="@{/passenger/busschedules/{id}(id=${id})}">Bus Schedules</a>
+	<a th:href="@{/passenger/bookingseat/{id}(id=${id})}">Booking Seat</a>
+	<a th:href="@{/passenger/bookinghistory/{id}(id=${id})}">Booking History</a>
+
+</body>
+
+</html>
