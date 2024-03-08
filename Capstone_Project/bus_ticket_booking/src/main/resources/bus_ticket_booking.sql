@@ -15,7 +15,9 @@ CREATE TABLE passenger (
 );
 
 INSERT INTO passenger(passenger_name, email, mobile_no, login_password) 
-VALUE('Rajasekar T','raj@outlook.com','9999999999','JFSWD2');
+VALUES
+('Rajasekar T', 'raj@outlook.com', '9999999999', 'JFSWD2'),
+('Mohan', 'mohan@gmail.com', '6666666666', 'Agri');
 
 SELECT * FROM passenger;
 
@@ -41,7 +43,12 @@ CREATE TABLE bus (
 );
 
 INSERT INTO bus(bus_name, from_loc, to_loc, start_date, end_date, start_time, end_time, route, total_seats, available_seats, price) 
-values('Mahalakshmi', 'Vellore', 'Chennai', '2024-02-24', '2024-02-24', '07:00:00','10:30:00','Kanchipuram',100, 100, 350);
+values
+('Mahalakshmi', 'Vellore', 'Chennai', '2024-02-24', '2024-02-24', '07:00:00','10:30:00','Kanchipuram',100, 100, 350),
+('Sita', 'Vellore', 'Chennai', '2024-02-24', '2024-02-24', '10:00:00','02:00:00','Kanchipuram',120, 120, 400),
+('Ramajayam', 'Vellore', 'Pondicherry', '2024-02-25', '2024-02-25', '10:00:00','02:30:00','Tindivanam',120, 120, 500),
+('Kannagi', 'Polur', 'Vellore', '2024-02-26', '2024-02-26', '07:00:00','08:30:00','Santhavasal',100, 100, 350);
+
 
 
 SELECT * FROM bus;
