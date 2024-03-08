@@ -92,9 +92,13 @@ public class BookingController {
 	}
 
 	// Booking History
-	@GetMapping({ "booking" })
-	public String busSchedules(Model model) {
-		List<Booking> bookings = bookRepo.findAll();
+	@GetMapping({ "booking/{passengerId}" })
+	public String busSchedules(@PathVariable("passengerId") int passengerId, Model model) {
+		// It lists all records
+		// List<Booking> bookings = bookRepo.findAll();
+		
+		// But to list records based on passenger Id
+		List<Booking> bookings = bookRepo.findByPassengerId(passengerId);
 		model.addAttribute("bookings", bookings);
 		return "booking_history";
 	}
