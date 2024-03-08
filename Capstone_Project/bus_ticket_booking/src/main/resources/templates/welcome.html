@@ -20,29 +20,43 @@
 
 	<h1>Menu</h1>
 	<a th:href="@{/passenger/modifyprofile/{id}(id=${id})}">My Profile</a>
-
 	<a th:href="@{/passenger/busschedules/{id}(id=${id})}">Bus Schedules</a>
-	<a th:href="@{/passenger/booking}">Booking History</a>
+	<a th:href="@{/passenger/booking/{id}(id=${id})}">Booking History</a>
 
-	<br />
-	<h1>Seach For Bus</h1>
-	<!-- Move the anchor tag to button -->
-	<a th:href="@{/passenger/busschedules/{id}(id=${id})}">Bus Schedules Based on Date</a>
 	<br>
 	<br>
-	<tr>
-		<td><label>Journey Date:</label></td>
-		<td><input id="sDate" type="date" /></td>
+	<h1>Seach and Book Bus Tickets</h1>
+	<form role="form" method="get" action="/passenger/busschedules">
 
-		<td><label>From:</label></td>
-		<td><input id="fromLoc" type="text" /></td>
+		<td><label for="sDate">Journey Date:</label></td>
+		<td><input id="sDate" type="date" name="sDate" required /></td>
 
-		<td><label>To:</label></td>
-		<td><input id="toLoc" type="text" /></td>
+		<!--		
+		<td><label for="fromLoc">From:</label></td>
+		<td><input id="fromLoc" type="text" name="fromLoc" /></td>
 
+		<td><label for="toLoc">To:</label></td>
+		<td><input id="toLoc" type="text" name="toLoc" /></td>
+		-->
+
+		<td>
+			<label for="fromLoc">From Location:</label>
+			<select name="fromLoc">
+				<option th:each="f : ${from}" th:value="${f}" th:text="${f}" required>
+				</option>
+			</select>
+		</td>
+
+		<td>
+			<label for="toLoc">To Location:</label>
+			<select name="toLoc">
+				<option th:each="t : ${to}" th:value="${t}" th:text="${t}" required>
+				</option>
+			</select>
+		</td>
 		<td><input type="submit" value="Search"></td>
-	</tr>
 
+	</form>
 </body>
 
 </html>
