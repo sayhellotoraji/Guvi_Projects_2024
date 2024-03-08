@@ -1,5 +1,6 @@
 package com.rajasekar_t.bus_ticket_booking.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,15 @@ public class BusController {
 		model.addAttribute("buses", buses);
 		
 		model.addAttribute("pid", id);
+		return "bus_schedules";
+	}
+	
+	
+	@GetMapping({ "busschedules/{sdate}/{fromLoc}/{toLoc}" })
+	public String busSchedulesSearch(@PathVariable("sdate") LocalDate sdate, @PathVariable("fromLoc") String fromLoc, @PathVariable("toLoc") String toLoc,  Model model) {
+		List<Bus> buses = busRepo.findByFromLocAndToLocAndStartDate(fromLoc, toLoc, sdate);
+		model.addAttribute("buses", buses);
+		
 		return "bus_schedules";
 	}
 

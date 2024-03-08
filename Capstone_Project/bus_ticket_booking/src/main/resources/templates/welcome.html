@@ -16,20 +16,33 @@
 	<p th:text="'Passenger ID:   '+${id}" />
 	<p th:text="'Passenger Name: '+${name}" />
 
-<!--	<h3 style="background-color: cyan;" th:text="${message}"></h3> -->
+	<!--	<h3 style="background-color: cyan;" th:text="${message}"></h3> -->
 
-
-	<!--Need to modify the links -->
+	<h1>Menu</h1>
 	<a th:href="@{/passenger/modifyprofile/{id}(id=${id})}">My Profile</a>
 
-	<!--This wont work because it is tied up with login page 
-		<a th:href="@{modfifyprofile/{id}(id=${id})}">My Profile</a>
-		-->
 	<a th:href="@{/passenger/busschedules/{id}(id=${id})}">Bus Schedules</a>
 	<a th:href="@{/passenger/booking}">Booking History</a>
 
-	<!--	<a th:href="@{/passenger/bookingseat/{id}(id=${id})}">Booking Seat</a>
--->
+	<br />
+	<h1>Seach For Bus</h1>
+	<!-- Move the anchor tag to button -->
+	<a th:href="@{/passenger/busschedules/{id}(id=${id})}">Bus Schedules Based on Date</a>
+	<br>
+	<br>
+	<tr>
+		<td><label>Journey Date:</label></td>
+		<td><input id="sDate" type="date" /></td>
+
+		<td><label>From:</label></td>
+		<td><input id="fromLoc" type="text" /></td>
+
+		<td><label>To:</label></td>
+		<td><input id="toLoc" type="text" /></td>
+
+		<td><input type="submit" value="Search"></td>
+	</tr>
+
 </body>
 
 </html>
