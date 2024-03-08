@@ -1,5 +1,8 @@
 package com.rajasekar_t.bus_ticket_booking.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.rajasekar_t.bus_ticket_booking.model.Bus;
 import com.rajasekar_t.bus_ticket_booking.model.Passenger;
+import com.rajasekar_t.bus_ticket_booking.repository.BookingRepository;
+import com.rajasekar_t.bus_ticket_booking.repository.BusRepository;
 import com.rajasekar_t.bus_ticket_booking.repository.PassengerRepository;
 
 @Controller
@@ -18,6 +24,12 @@ public class PassengerController {
 
 	@Autowired
 	PassengerRepository passRepo;
+
+	@Autowired
+	BusRepository busRepo;
+	
+	@Autowired
+	BookingRepository bookRepo;
 
 	// **************************************************************
 	// Registration controllers
@@ -52,6 +64,20 @@ public class PassengerController {
 		String name = passRepo.findById(passengerId).get().getPassengerName();
 		model.addAttribute("id", passengerId);
 		model.addAttribute("name", name);
+
+		List<Bus> buses = busRepo.findAll();
+		List<String> fromList = new ArrayList<>();
+		List<String> toList = new ArrayList<>();
+
+		for (Bus b : buses) {
+			fromList.add(b.getFromLoc());
+			toList.add(b.getToLoc());
+		}
+
+		model.addAttribute("from", fromList);
+		model.addAttribute("to", toList);
+		
+		// Find latest booking & display it in welcome page
 		return "welcome";
 	}
 
@@ -60,7 +86,6 @@ public class PassengerController {
 
 	@GetMapping({ "modifyprofile/{passengerId}" })
 	public String getPrescriptionModify(@PathVariable("passengerId") int passengerId, Model model) {
-		// int id = passRepo.findById(passengerId).get().getPassengerId();
 		String name = passRepo.findById(passengerId).get().getPassengerName();
 		model.addAttribute("id", passengerId);
 		model.addAttribute("name", name);
