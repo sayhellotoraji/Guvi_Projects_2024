@@ -10,22 +10,25 @@
 <body>
 	<center>
 		<h1>Passenger Portal</h1>
+
 	</center>
 
 	<p th:text="'Passenger ID:   '+${id}" />
 	<p th:text="'Passenger Name: '+${name}" />
 
+<!--	<h3 style="background-color: cyan;" th:text="${message}"></h3> -->
+
 
 	<!--Need to modify the links -->
 	<a th:href="@{/passenger/modifyprofile/{id}(id=${id})}">My Profile</a>
-		
+
 	<!--This wont work because it is tied up with login page 
 		<a th:href="@{modfifyprofile/{id}(id=${id})}">My Profile</a>
 		-->
 	<a th:href="@{/passenger/busschedules/{id}(id=${id})}">Bus Schedules</a>
 	<a th:href="@{/passenger/booking}">Booking History</a>
 
-<!--	<a th:href="@{/passenger/bookingseat/{id}(id=${id})}">Booking Seat</a>
+	<!--	<a th:href="@{/passenger/bookingseat/{id}(id=${id})}">Booking Seat</a>
 -->
 </body>
 

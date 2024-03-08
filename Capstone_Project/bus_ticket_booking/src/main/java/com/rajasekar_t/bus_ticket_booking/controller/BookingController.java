@@ -39,12 +39,12 @@ public class BookingController {
 		// After every successful transaction
 		Passenger p = passRepo.findById(passengerId).get();
 		String passengerName = p.getPassengerName();
-		
+
 		Bus bus = busRepo.findById(busId).get();
 		String busName = bus.getBusName();
 		int price = bus.getPrice();
+		int seatsAvailable = bus.getAvailableSeats();
 
-		
 		// New Booking - Prepopulate form data
 		Booking booking = new Booking();
 		booking.setPassengerId(passengerId);
@@ -57,33 +57,40 @@ public class BookingController {
 		model.addAttribute("bookingForm", booking);
 		model.addAttribute("passengerId", passengerId);
 		model.addAttribute("passengerName", passengerName);
-
+		model.addAttribute("seatsAvailable", seatsAvailable);
 		return "booking";
 	}
 
 	@PostMapping({ "booking/save" })
 	public String postRegister(@ModelAttribute Booking booking, Model model) {
 		Bus bus = busRepo.findById(booking.getBusId()).get();
-		
+
 		// Time of booking
 		booking.setBookedTime(LocalDateTime.now());
 
 		// Get price and no of seats booked
 		int seats = booking.getSeatQty();
-
-		bookRepo.save(booking);
-
-		// Update available seats in bus table
 		int available_seats = bus.getAvailableSeats();
-		bus.setAvailableSeats(available_seats - seats);
 
-		// Save the data in BusRepository
-		busRepo.save(bus);
+		if (seats <= available_seats) {
+			bookRepo.save(booking);
+
+			// Update available seats in bus table
+			bus.setAvailableSeats(available_seats - seats);
+
+			// Save the data in BusRepository
+			busRepo.save(bus);
+			
+			model.addAttribute("message", "Booking Confirmed");		}
+		
+		else {
+
+			model.addAttribute("message", "Booking Failed");
+		}
 
 		return "redirect:/passenger/welcome/" + booking.getPassengerId();
 	}
 
-	
 	// Booking History
 	@GetMapping({ "booking" })
 	public String busSchedules(Model model) {
