@@ -8,11 +8,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity(name = "bus")
 @Table
+
+@NamedQuery(name="Bus.Choose", query = "from bus where fromLoc =:from and toLoc=:to and startDate =:sdate")
 public class Bus {
 
 	@Id
