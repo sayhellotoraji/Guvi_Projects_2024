@@ -14,6 +14,14 @@ Batch 	: JFSWD2
 
 A CRUD Application for Employee management is developed using Spring boot. 
 
+Source Code:
+
+Backend: https://github.com/sayhellotoraji/Guvi_Projects_2024/tree/main/Mini_Project_1/employee_management
+
+Frontend: https://github.com/sayhellotoraji/Guvi_Projects_2024/tree/main/Mini_Project_1/employee_management_frontend
+
+
+
 Features Developed:
 * Implemented Controller, Service, Repository (JPA), Model Layers.
 
@@ -24,6 +32,8 @@ Features Developed:
 * Global Handling of Exceptions with Controller Advice.
 
 * Used Swagger to document and test REST Api Endpoints.
+ 
+ 
  
 
 
