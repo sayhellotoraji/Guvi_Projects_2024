@@ -24,9 +24,43 @@
 </head>
 
 <body>
-	<!--<a th:href="">Back to Home</a>-->
+
 
 	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
+
+
+	<center>
+		<h1>My Current Booking</h1>
+		<table>
+			<thead>
+				<th>Booked Date</th>
+				<th>Bus Id</th>
+				<th>Bus Name</th>
+				<th>Seats Qty</th>
+				<th>Price</th>
+				<th>Total Amount</th>
+				<th>Action</th>
+
+			</thead>
+			<tbody th:if="${booked != null}">
+				<tr>
+					<td th:text="${booked.bookedTime}"></td>
+					<td th:text="${booked.busId}"></td>
+					<td th:text="${booked.busName}"></td>
+					<td th:text="${booked.seatQty}"></td>
+					<td th:text="${booked.price}"></td>
+					<td th:text="${booked.amount}"></td>
+					<td>
+						<button style="background-color: green; ">
+							<a style="color: white;">E - Receipt Download</a>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+
+	<br>
 
 	<center>
 		<h1>Booking History</h1>
@@ -45,22 +79,24 @@
 				<th>Action</th>
 
 			</thead>
-			<tr th:each="booking : ${bookings}">
+			<tbody th:if="${bookings != null}">
+				<tr th:each="booking : ${bookings}">
 
-				<td th:text="${booking.bookedTime}"></td>
-				<td th:text="${booking.busId}"></td>
-				<td th:text="${booking.busName}"></td>
-				<td th:text="${booking.seatQty}"></td>
-				<td th:text="${booking.price}"></td>
-				<td th:text="${booking.amount}"></td>
+					<td th:text="${booking.bookedTime}"></td>
+					<td th:text="${booking.busId}"></td>
+					<td th:text="${booking.busName}"></td>
+					<td th:text="${booking.seatQty}"></td>
+					<td th:text="${booking.price}"></td>
+					<td th:text="${booking.amount}"></td>
 
-				<!-- Add Pdf later -->
-				<td>
-					<button style="background-color: green; ">
-						<a>E - Receipt Download</a>
-					</button>
-				</td>
-			</tr>
+					<!-- Add Pdf later -->
+					<td>
+						<button style="background-color: green; ">
+							<a>E - Receipt Download</a>
+						</button>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</center>
 </body>

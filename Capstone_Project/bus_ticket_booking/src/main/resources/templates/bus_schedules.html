@@ -26,53 +26,56 @@
 <body>
 
 	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
-
+	<!--
+	<p th:text="'Passenger Id:   '+${id}" />
+	<p th:text="'Passenger Name: '+${name}" />
+	-->
 	<center>
 		<h1>Bus Details and Schedules</h1>
 
 		<br />
 		<br />
 
-			<table>
-				<thead>
-					<!-- Not needed 
+		<table>
+			<thead>
+				<!-- Not needed 
 				<th>Bus ID</th>
 				-->
-					<th>Bus Name</th>
-					<th>From</th>
-					<th>To</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Start Time</th>
-					<th>End Time</th>
-					<th>Route</th>
-					<th>Total Seats</th>
-					<th>Available Seats</th>
-					<th>Price</th>
-					<th>Action</th>
+				<th>Bus Name</th>
+				<th>From</th>
+				<th>To</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+				<th>Route</th>
+				<th>Total Seats</th>
+				<th>Available Seats</th>
+				<th>Price</th>
+				<th>Action</th>
 
-				</thead>
-				<tr th:each="bus : ${buses}">
-					<!--Not needed 
+			</thead>
+			<tr th:each="bus : ${buses}">
+				<!--Not needed 
 					<td th:text="${bus.busId}"></td> -->
-					<td th:text="${bus.busName}"></td>
-					<td th:text="${bus.fromLoc}"></td>
-					<td th:text="${bus.toLoc}"></td>
-					<td th:text="${bus.startDate}"></td>
-					<td th:text="${bus.endDate}"></td>
-					<td th:text="${bus.startTime}"></td>
-					<td th:text="${bus.endTime}"></td>
-					<td th:text="${bus.route}"></td>
-					<td th:text="${bus.totalSeats}"></td>
-					<td th:text="${bus.availableSeats}"></td>
-					<td th:text="${bus.price}"></td>
-					<td>
-						<button style="background-color: blue; ">
-							<a th:href="@{/passenger/{pid}/bookingseat/{id}(id=${bus.busId}, pid=${pid})}">Book</a>
-						</button>
-					</td>
-				</tr>
-			</table>
+				<td th:text="${bus.busName}"></td>
+				<td th:text="${bus.fromLoc}"></td>
+				<td th:text="${bus.toLoc}"></td>
+				<td th:text="${bus.startDate}"></td>
+				<td th:text="${bus.endDate}"></td>
+				<td th:text="${bus.startTime}"></td>
+				<td th:text="${bus.endTime}"></td>
+				<td th:text="${bus.route}"></td>
+				<td th:text="${bus.totalSeats}"></td>
+				<td th:text="${bus.availableSeats}"></td>
+				<td th:text="${bus.price}"></td>
+				<td>
+					<button style="background-color: blue; ">
+						<a th:href="@{/passenger/{pid}/bookingseat/{id}(id=${bus.busId}, pid=${passengerId})}">Book</a>
+					</button>
+				</td>
+			</tr>
+		</table>
 	</center>
 </body>
 

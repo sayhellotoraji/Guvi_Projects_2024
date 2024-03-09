@@ -71,16 +71,6 @@ public class PassengerController {
 		model.addAttribute("from", fromList);
 		model.addAttribute("to", toList);
 
-		// Find latest booking & display it in welcome page
-		// Currently we are considering the last booking by user
-		int size = bookRepo.findByPassengerId(passengerId).size();
-
-		// Return as a List
-		Booking busbooked = bookRepo.findByPassengerId(passengerId).get(size - 1);
-		List<Booking> bookings = new ArrayList<>();
-		bookings.add(busbooked);
-		model.addAttribute("bookings", bookings);
-
 		return "welcome";
 	}
 

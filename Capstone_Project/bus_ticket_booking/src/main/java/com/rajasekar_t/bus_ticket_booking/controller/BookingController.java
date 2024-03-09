@@ -1,6 +1,7 @@
 package com.rajasekar_t.bus_ticket_booking.controller;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,9 +81,10 @@ public class BookingController {
 
 			// Save the data in BusRepository
 			busRepo.save(bus);
-			
-			model.addAttribute("message", "Booking Confirmed");		}
-		
+
+			model.addAttribute("message", "Booking Confirmed");
+		}
+
 		else {
 
 			model.addAttribute("message", "Booking Failed");
@@ -94,12 +96,24 @@ public class BookingController {
 	// Booking History
 	@GetMapping({ "booking/{passengerId}" })
 	public String busSchedules(@PathVariable("passengerId") int passengerId, Model model) {
-		// It lists all records
-		// List<Booking> bookings = bookRepo.findAll();
-		
-		// But to list records based on passenger Id
-		List<Booking> bookings = bookRepo.findByPassengerId(passengerId);
-		model.addAttribute("bookings", bookings);
+
+		// Find latest booking & display it in welcome page
+		// Currently we are considering the last booking by user
+		int size = bookRepo.findByPassengerId(passengerId).size();
+
+		if (size >= 1) {
+			Booking busbooked = bookRepo.findByPassengerId(passengerId).get(size - 1);
+			model.addAttribute("booked", busbooked);
+			model.addAttribute("bookings", bookRepo.findByPassengerId(passengerId));
+
+		} else {
+			// Single Latest Booking
+			model.addAttribute("booked", null);
+
+			// All Bookings done by the Passenger
+			model.addAttribute("bookings", null);
+		}
+
 		return "booking_history";
 	}
 }
