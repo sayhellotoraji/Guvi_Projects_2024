@@ -27,12 +27,10 @@ public class LoginController {
 	}
 
 	
-	@GetMapping("/index")
+	@GetMapping("/")
 	public String welcome(Model model) {
-
-// 		Serving Data from backend -> frontend using model class
-//		model.addAttribute("listEmployees", employeeService.findAllEmployees());
-		return "index";
+		// Transferring control from backend to frontend
+		return "redirect:http://127.0.0.1:5500/html/";
 	}
 
 
