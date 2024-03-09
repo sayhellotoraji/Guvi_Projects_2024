@@ -12,7 +12,15 @@ Batch 	: JFSWD2
 # Employee Management System
 ### Developed By Rajasekar T
 
-A CRUD Application for Employee management is developed using Spring boot.
+A CRUD Application for Employee management is developed using Spring boot. 
+
+Features Developed:
+Implemented Controller, Service, Repository (JPA), Model Layers.
+Tested the application with Mockito & JUnit.
+Added Security features to the application with Spring Security.
+Global Handling of Exceptions with Controller Advice.
+Used Swagger to document and test REST Api Endpoints.
+ 
 
 
 ## Technologies Used
@@ -23,11 +31,12 @@ A CRUD Application for Employee management is developed using Spring boot.
 * MySQL
 * HTML, CSS, JavaScript
 
+
 ## Tools Used
 
 * STS IDE - Backend Application Development
 * VS Code - Frontend Application Development
-* VS Code Live Server - To locally host webpages
+* VS Code extension: Live Server - To locally host webpages
 * MySQL Workbench - Database Design & Development
 * Postman - API Testing
 
@@ -42,7 +51,7 @@ Frontend - HTML, CSS, JavaScript
 
 Backend  - Springboot ( MVC ), JPA, MySQL
 
-Combined in working with the help of controllers & REST APIs
+Seamless integration between front and backend with the help of controllers & REST APIs
 
 
 
@@ -65,6 +74,8 @@ Containts 3 folders
 * css 
 * js
 
+
+
 ## Setup 
 
 Springboot Setup:
@@ -81,6 +92,8 @@ MySQL Setup:
 VS Code Setup: 
 
 * Open the employee_management_frontend folder in VS Code 
+
+
 
 ## Configuration 
 
@@ -105,7 +118,7 @@ The application after successful build, gets hosted locally in localhost:8081
 
 Frontend Procedure:
 
-Select the index.html file and click on Live Server which is a VS Code extension, to host frontend locally
+Select the index.html file and click on Live Server, which is a VS Code extension, to host frontend locally
 
 
 ## Important Application URLs: Local
@@ -127,7 +140,7 @@ Username: Raja
 Password: JFSWD2
 
 Frontend:
-* Browser view opens the index.html: 
+* Frontend View landing page: Default ( http://127.0.0.1:5500 )
 
 http://127.0.0.1:5500/html/
 
