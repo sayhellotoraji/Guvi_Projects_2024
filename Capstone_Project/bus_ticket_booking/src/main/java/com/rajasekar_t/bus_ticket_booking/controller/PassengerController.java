@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.rajasekar_t.bus_ticket_booking.model.Booking;
 import com.rajasekar_t.bus_ticket_booking.model.Bus;
 import com.rajasekar_t.bus_ticket_booking.model.Passenger;
 import com.rajasekar_t.bus_ticket_booking.repository.BookingRepository;
@@ -27,7 +28,7 @@ public class PassengerController {
 
 	@Autowired
 	BusRepository busRepo;
-	
+
 	@Autowired
 	BookingRepository bookRepo;
 
@@ -43,7 +44,7 @@ public class PassengerController {
 	@PostMapping({ "register/save" })
 	public String postRegister(@ModelAttribute Passenger passenger, Model model) {
 		passRepo.save(passenger);
-		
+
 		// default spring security login page
 		return "redirect:/login";
 	}
@@ -69,8 +70,17 @@ public class PassengerController {
 
 		model.addAttribute("from", fromList);
 		model.addAttribute("to", toList);
-		
+
 		// Find latest booking & display it in welcome page
+		// Currently we are considering the last booking by user
+		int size = bookRepo.findByPassengerId(passengerId).size();
+
+		// Return as a List
+		Booking busbooked = bookRepo.findByPassengerId(passengerId).get(size - 1);
+		List<Booking> bookings = new ArrayList<>();
+		bookings.add(busbooked);
+		model.addAttribute("bookings", bookings);
+
 		return "welcome";
 	}
 
