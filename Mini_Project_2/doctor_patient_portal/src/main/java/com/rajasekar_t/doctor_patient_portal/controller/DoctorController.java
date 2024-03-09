@@ -43,11 +43,7 @@ public class DoctorController {
 	MedicalHistoryRepository histRepo;
 
 	// ************************************************************
-	// Login & Home Controllers
-	@GetMapping({ "login" })
-	public String login() {
-		return "login";
-	}
+	// Home Controllers
 
 	// Home page - Doctor
 	@GetMapping({ "{docId}" })

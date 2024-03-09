@@ -63,14 +63,8 @@ public class PatientController {
 	// **********************************************************
 	// Login Controllers
 
-	// Need to implement login features
-	@GetMapping({ "login" })
-	public String login() {
-		return "login";
-	}
+	// No Need to implement login features
 
-	// Post mapping for submitting login credentials
-	// Implement Here
 
 	// Home page - Patient
 	@GetMapping({ "{patientId}" })
