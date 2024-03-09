@@ -43,20 +43,13 @@ public class PassengerController {
 	@PostMapping({ "register/save" })
 	public String postRegister(@ModelAttribute Passenger passenger, Model model) {
 		passRepo.save(passenger);
-		return "redirect:/passenger/login";
+		
+		// default spring security login page
+		return "redirect:/login";
 	}
 
 	// **********************************************************
-	// Login Controllers
-
-	// Need to implement login features
-	@GetMapping({ "login" })
-	public String login() {
-		return "login";
-	}
-
-	// Post mapping for submitting login credentials
-	// Implement Here
+	// Home Controllers
 
 	// Home page - Patient
 	@GetMapping({ "welcome/{passengerId}" })
