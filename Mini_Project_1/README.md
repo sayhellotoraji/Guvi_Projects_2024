@@ -15,11 +15,15 @@ Batch 	: JFSWD2
 A CRUD Application for Employee management is developed using Spring boot. 
 
 Features Developed:
-Implemented Controller, Service, Repository (JPA), Model Layers.
-Tested the application with Mockito & JUnit.
-Added Security features to the application with Spring Security.
-Global Handling of Exceptions with Controller Advice.
-Used Swagger to document and test REST Api Endpoints.
+* Implemented Controller, Service, Repository (JPA), Model Layers.
+
+* Tested the application with Mockito & JUnit.
+
+* Added Security features to the application with Spring Security.
+
+* Global Handling of Exceptions with Controller Advice.
+
+* Used Swagger to document and test REST Api Endpoints.
  
 
 
