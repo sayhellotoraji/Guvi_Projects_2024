@@ -46,7 +46,7 @@ INSERT INTO bus(bus_name, from_loc, to_loc, start_date, end_date, start_time, en
 values
 ('Mahalakshmi', 'Vellore', 'Chennai', '2024-02-24', '2024-02-24', '07:00:00','10:30:00','Kanchipuram',100, 100, 350),
 ('Sita', 'Vellore', 'Chennai', '2024-02-24', '2024-02-24', '10:00:00','02:00:00','Kanchipuram',120, 120, 400),
-('Ramajayam', 'Vellore', 'Pondicherry', '2024-02-25', '2024-02-25', '10:00:00','02:30:00','Tindivanam',120, 120, 500),
+('Ramajayam', 'Tiruvannamalai', 'Pondicherry', '2024-02-25', '2024-02-25', '10:00:00','02:30:00','Tindivanam',120, 120, 500),
 ('Kannagi', 'Polur', 'Vellore', '2024-02-26', '2024-02-26', '07:00:00','08:30:00','Santhavasal',100, 100, 350);
 
 
@@ -75,6 +75,6 @@ CREATE TABLE booking (
 );
 
 INSERT INTO booking(passenger_id, passenger_name, bus_id, bus_name, seat_qty, booked_price, amount)
-VALUES(1, 'Rajasekar T', 1, 'Mahalakshmi', 0, 350, 0);
+VALUES(1, 'Rajasekar T', 1, 'Mahalakshmi', 5, 350, 1750);
 
 SELECT * FROM booking;
