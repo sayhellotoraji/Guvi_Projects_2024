@@ -26,46 +26,51 @@
 			color: white;
 		}
 	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 </head>
 
 <body style="background-color: lightgray">
-	<br>
+	<br />
 
-	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
-
+	<button style="background-color: blue; color: white" onclick="history.go(-1)">
+		Go to Dashboard
+	</button>
 
 	<center>
 		<h1>My Current Booking</h1>
-		<table>
-			<thead>
-				<th>Booked Date</th>
-				<th>Bus Id</th>
-				<th>Bus Name</th>
-				<th>Seats Qty</th>
-				<th>Price</th>
-				<th>Total Amount</th>
-				<th>Action</th>
+		<div id="invoice">
+			<table>
+				<thead>
+					<th>Booked Date</th>
+					<th>Bus Id</th>
+					<th>Bus Name</th>
+					<th>Seats Qty</th>
+					<th>Price</th>
+					<th>Total Amount</th>
 
-			</thead>
-			<tbody th:if="${booked != null}">
-				<tr>
-					<td th:text="${booked.bookedTime}"></td>
-					<td th:text="${booked.busId}"></td>
-					<td th:text="${booked.busName}"></td>
-					<td th:text="${booked.seatQty}"></td>
-					<td th:text="${booked.price}"></td>
-					<td th:text="${booked.amount}"></td>
-					<td>
-						<button style="background-color: green; ">
-							<a style="color: white;">E - Receipt Download</a>
-						</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+				</thead>
+				<tbody th:if="${booked != null}">
+					<tr>
+						<td th:text="${booked.bookedTime}"></td>
+						<td th:text="${booked.busId}"></td>
+						<td th:text="${booked.busName}"></td>
+						<td th:text="${booked.seatQty}"></td>
+						<td th:text="${booked.price}"></td>
+						<td th:text="${booked.amount}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<td>
+			<button style="background-color: green" onclick="generatePDF()">
+				E - Receipt Download
+			</button>
+		</td>
 	</center>
 
-	<br>
+	<br />
 
 	<center>
 		<h1>Booking History</h1>
@@ -82,11 +87,9 @@
 				<th>Price</th>
 				<th>Total Amount</th>
 				<th>Action</th>
-
 			</thead>
 			<tbody th:if="${bookings != null}">
 				<tr th:each="booking : ${bookings}">
-
 					<td th:text="${booking.bookedTime}"></td>
 					<td th:text="${booking.busId}"></td>
 					<td th:text="${booking.busName}"></td>
@@ -96,7 +99,7 @@
 
 					<!-- Add Pdf later -->
 					<td>
-						<button style="background-color: green; ">
+						<button style="background-color: green">
 							<a>E - Receipt Download</a>
 						</button>
 					</td>
@@ -104,6 +107,24 @@
 			</tbody>
 		</table>
 	</center>
+
+	<script>
+		function generatePDF() {
+			const element = document.getElementById("invoice");
+
+			// Default - html2pdf().from(element).save();
+
+			var opt = {
+				margin: 1,
+				filename: 'e-receipt.pdf',
+				image: {type: 'jpeg', quality: 0.98},
+				html2canvas: {scale: 2},
+				jsPDF: {unit: 'in', format: 'a4', orientation: 'landscape'}
+			};
+			
+			html2pdf().set(opt).from(element).save();
+		}
+	</script>
 </body>
 
 </html>
