@@ -5,66 +5,89 @@
     <title>Employee Home page</title>
     <!-- <meta charset="UTF-8"/> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/styles.css" />
+    <!--
+      <link rel="stylesheet" href="/css/styles.css" />
+    -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body>
-    <h1>View Employee Page</h1>
-    <h1>By, Rajasekar T</h1>
+  <body style="background-color: aqua">
     <br />
-
-    <center>
-      <button><a href="index.html">Back to Home Page</a></button>
-    </center>
-    <br/>
-
-    <!-- Margin left and Right = Auto to centre the table -->
-    <table
-      id="table"
-      class="table table-bordered"
-      style="margin-left: auto; margin-right: auto"
+    <br />
+    <div
+      class="container"
+      style="background-color: white; width: 85%; height: 100%"
     >
-      <!-- Static Table content -->
+      <center>
+        <h1>View Employee Page</h1>
+        <h1>By, Rajasekar T</h1>
+        <br />
+      </center>
+      <center>
+        <button><a href="index.html">Back to Home Page</a></button>
+      </center>
+      <br />
 
-      <tr>
-        <th><h2>Emp Id</h2></th>
-        <td id="employee_id"></td>
+      <!-- Margin left and Right = Auto to centre the table -->
+      <table
+        id="table"
+        class="table table-bordered"
+        style="margin-left: auto; margin-right: auto"
+      >
+        <!-- Static Table content -->
 
-        <th><h2>First Name</h2></th>
-        <td id="first_name"></td>
+        <tr>
+          <th><h2>Emp Id</h2></th>
+          <td id="employee_id"></td>
 
-        <th><h2>Middle Name</h2></th>
-        <td id="middle_name"></td>
+          <th><h2>First Name</h2></th>
+          <td id="first_name"></td>
 
-        <th><h2>Last Name</h2></th>
-        <td id="last_name"></td>
-      </tr>
-      <tr>
-        <th><h2>DOB</h2></th>
-        <td id="dob"></td>
+          <th><h2>Middle Name</h2></th>
+          <td id="middle_name"></td>
 
-        <th><h2>Sex</h2></th>
-        <td id="sex"></td>
-        <th><h2>Mobile No</h2></th>
-        <td id="mobile_no"></td>
-        <th><h2>Email</h2></th>
-        <td id="email"></td>
-      </tr>
-      <tr>
-        <th><h2>Address</h2></th>
-        <td id="address"></td>
+          <th><h2>Last Name</h2></th>
+          <td id="last_name"></td>
+        </tr>
+        <tr>
+          <th><h2>DOB</h2></th>
+          <td id="dob"></td>
 
-        <th><h2>DOJ</h2></th>
-        <td id="doj"></td>
+          <th><h2>Sex</h2></th>
+          <td id="sex"></td>
+          <th><h2>Mobile No</h2></th>
+          <td id="mobile_no"></td>
+          <th><h2>Email</h2></th>
+          <td id="email"></td>
+        </tr>
+        <tr>
+          <th><h2>Address</h2></th>
+          <td id="address"></td>
 
-        <th><h2>Designation</h2></th>
-        <td id="department_name"></td>
+          <th><h2>DOJ</h2></th>
+          <td id="doj"></td>
 
-        <th><h2>Salary</h2></th>
-        <td id="salary"></td>
-      </tr>
-    </table>
+          <th><h2>Designation</h2></th>
+          <td id="department_name"></td>
 
-    <!-- script_update.js is used because it fetches the employee of a particular empID -->
-    <script src="/js/script_view.js"></script>
+          <th><h2>Salary</h2></th>
+          <td id="salary"></td>
+        </tr>
+      </table>
+      <br />
+      <br />
+
+      <!-- script_update.js is used because it fetches the employee of a particular empID -->
+      <script src="/js/script_view.js"></script>
+    </div>
   </body>
 </html>

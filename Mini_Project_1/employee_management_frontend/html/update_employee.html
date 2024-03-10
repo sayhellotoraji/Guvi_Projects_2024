@@ -4,12 +4,37 @@
     <title>Update Employee</title>
     <!-- <meta charset="UTF-8"/>-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/styles.css" />
+    <!--
+      <link rel="stylesheet" href="/css/styles.css" />
+    -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
-  <body>
-    <center><h3>Update Employee Page</h3></center>
-    <!-- 
+  <body style="background-color: aqua">
+    <br />
+    <br />
+
+    <div
+      class="container"
+      style="background-color: white; width: 60%; height: 100%"
+    >
+      <br />
+      <button><a href="index.html">Back to Home Page</a></button>
+      <br />
+      <br />
+      <center><h3>Update Employee Page</h3></center>
+
+      <!-- 
       With Form Tags:
           - Do not use onclick, instead use onsubmit 
           
@@ -21,146 +46,153 @@
           - Form tag supports only GET & POST methods, 
             It is developers Reponsibility to handle it at server side
     -->
-    <center>
-      <form
-        id="updateEmployeeForm"
-        method="post"
-        action="http://localhost:8081/modifyEmployee"
-        onsubmit="validation()"
-        style="width: 100%"
-      >
-        <!-- <label for="first_name">First name:</label><br> -->
+      <center>
+        <form
+          id="updateEmployeeForm"
+          method="post"
+          action="http://localhost:8081/modifyEmployee"
+          onsubmit="validation()"
+          style="width: 100%"
+        >
+          <!-- <label for="first_name">First name:</label><br> -->
 
-        <!-- employee_id is very important to update
+          <!-- employee_id is very important to update
             as the Add new employee option does not take employee_id  -->
-        <table>
-          <tr>
-            <td><label for="employee_id">Employee ID:</label></td>
-            <td>
-              <input type="text" id="employee_id" name="employee_id" readonly />
-            </td>
-          </tr>
+          <table>
+            <tr>
+              <td><label for="employee_id">Employee ID:</label></td>
+              <td>
+                <input
+                  type="text"
+                  id="employee_id"
+                  name="employee_id"
+                  readonly
+                />
+              </td>
+            </tr>
 
-          <tr>
-            <td><label for="first_name">First name:</label></td>
-            <td>
-              <input
-                type="text"
-                id="first_name"
-                name="first_name"
-                pattern="[A-Z]{1}[a-z]{1,}"
-                required
-              />
-            </td>
-          </tr>
+            <tr>
+              <td><label for="first_name">First name:</label></td>
+              <td>
+                <input
+                  type="text"
+                  id="first_name"
+                  name="first_name"
+                  pattern="[A-Z]{1}[a-z]{1,}"
+                  required
+                />
+              </td>
+            </tr>
 
-          <tr>
-            <td><label for="middle_name">Middle name:</label></td>
-            <td>
-              <input
-                type="text"
-                id="middle_name"
-                name="middle_name"
-                pattern="[A-Z]{1}[a-z]{1,}"
-              /><br />
-            </td>
-          </tr>
+            <tr>
+              <td><label for="middle_name">Middle name:</label></td>
+              <td>
+                <input
+                  type="text"
+                  id="middle_name"
+                  name="middle_name"
+                  pattern="[A-Z]{1}[a-z]{1,}"
+                /><br />
+              </td>
+            </tr>
 
-          <tr>
-            <td><label for="last_name">Last name:</label></td>
-            <td>
-              <input
-                type="text"
-                id="last_name"
-                name="last_name"
-                placeholder="Initial"
-                pattern="[A-Z]{1}"
-                required
-              /><br />
-            </td>
-          </tr>
+            <tr>
+              <td><label for="last_name">Last name:</label></td>
+              <td>
+                <input
+                  type="text"
+                  id="last_name"
+                  name="last_name"
+                  placeholder="Initial"
+                  pattern="[A-Z]{1}"
+                  required
+                /><br />
+              </td>
+            </tr>
 
-          <tr>
-            <td><label for="dob">DOB:</label></td>
-            <td><input type="date" id="dob" name="dob" required /><br /></td>
-          </tr>
+            <tr>
+              <td><label for="dob">DOB:</label></td>
+              <td><input type="date" id="dob" name="dob" required /><br /></td>
+            </tr>
 
-          <tr>
-            <td><label for="sex">Sex:</label></td>
-            <td>
-              <select name="sex" id="sex">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Transgender">Transgender</option>
-              </select>
-            </td>
-          </tr>
+            <tr>
+              <td><label for="sex">Sex:</label></td>
+              <td>
+                <select name="sex" id="sex">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Transgender">Transgender</option>
+                </select>
+              </td>
+            </tr>
 
-          <tr>
-            <td><label for="mobile_no">Mobile No:</label></td>
-            <td>
-              <input
-                type="tel"
-                id="mobile_no"
-                name="mobile_no"
-                placeholder="999 999 9999"
-                pattern="[6-9]{1}[0-9]{9}"
-                required
-              /><br />
-            </td>
-          </tr>
+            <tr>
+              <td><label for="mobile_no">Mobile No:</label></td>
+              <td>
+                <input
+                  type="tel"
+                  id="mobile_no"
+                  name="mobile_no"
+                  placeholder="999 999 9999"
+                  pattern="[6-9]{1}[0-9]{9}"
+                  required
+                /><br />
+              </td>
+            </tr>
 
-          <tr>
-            <td><label for="email">Email:</label></td>
-            <td>
-              <input type="email" id="email" name="email" required /><br />
-            </td>
-          </tr>
+            <tr>
+              <td><label for="email">Email:</label></td>
+              <td>
+                <input type="email" id="email" name="email" required /><br />
+              </td>
+            </tr>
 
-          <tr>
-            <td><label for="address">Address:</label></td>
-            <td>
-              <input type="text" id="address" name="address" required /><br />
-            </td>
-          </tr>
+            <tr>
+              <td><label for="address">Address:</label></td>
+              <td>
+                <input type="text" id="address" name="address" required /><br />
+              </td>
+            </tr>
 
-          <tr>
-            <td><label for="doj">DOJ:</label></td>
-            <td><input type="date" id="doj" name="doj" required /><br /></td>
-          </tr>
+            <tr>
+              <td><label for="doj">DOJ:</label></td>
+              <td><input type="date" id="doj" name="doj" required /><br /></td>
+            </tr>
 
-          <tr>
-            <td><label for="department_name">Designation:</label></td>
+            <tr>
+              <td><label for="department_name">Designation:</label></td>
 
-            <td>
-              <select name="department_name" id="department_name">
-                <option value="SDE">Software Engineer</option>
-                <option value="SDET">Tester</option>
-                <option value="Team Lead">Team Lead</option>
-                <option value="Manager">Manager</option>
-                <option value="HR">HR</option>
-              </select>
-            </td>
-          </tr>
+              <td>
+                <select name="department_name" id="department_name">
+                  <option value="SDE">Software Engineer</option>
+                  <option value="SDET">Tester</option>
+                  <option value="Team Lead">Team Lead</option>
+                  <option value="Manager">Manager</option>
+                  <option value="HR">HR</option>
+                </select>
+              </td>
+            </tr>
 
-          <tr>
-            <td><label for="salary">Salary (3 - 50 LPA):</label><br /></td>
-            <td>
-              <input
-                type="number"
-                id="salary"
-                name="salary"
-                min="300000"
-                max="5000000"
-              /><br />
-            </td>
-          </tr>
-        </table>
+            <tr>
+              <td><label for="salary">Salary (3 - 50 LPA):</label><br /></td>
+              <td>
+                <input
+                  type="number"
+                  id="salary"
+                  name="salary"
+                  min="300000"
+                  max="5000000"
+                /><br />
+              </td>
+            </tr>
+          </table>
 
-        <br />
-        <input type="submit" id="updateEmployee" value="Update Employee" />
-      </form>
-    </center>
+          <br />
+          <input type="submit" id="updateEmployee" value="Update Employee" />
+        </form>
+      </center>
+      <br />
+    </div>
 
     <!-- Testing redirect:  <button onclick="redirectFunction()">Landing page</button> -->
     <script src="/js/script_update.js"></script>
