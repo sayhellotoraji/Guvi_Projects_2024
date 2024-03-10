@@ -76,7 +76,9 @@ CREATE TABLE doctor (
 
 # DML - Insertion of Records
 INSERT INTO doctor(doctor_name, dob, specialization, sex, mobile_no, address, email, login_password) 
-VALUES('Mahalakshmi T', '1998-12-11','Orthopedics','Female', '6666666666', '136J1, Tiruvannamalai, Tamil Nadu','mahalakshmi@gmail.com',  'mahauniv');
+VALUES
+('Mahalakshmi T', '1998-12-11','Orthopedics','Female', '6666666666', '136J1, Tiruvannamalai, Tamil Nadu','mahalakshmi@gmail.com',  'mahauniv'),
+('MohanRaj T', '2000-08-03','HLRS','Male','9999999999','Polur, Tamil Nadu', 'mohan@gmail.com', 'mohanuniv');
 
 # DQL - Read All Records from the entity
 SELECT * FROM doctor;
