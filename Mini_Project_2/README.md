@@ -78,9 +78,11 @@ Backend  - Springboot ( MVC ), JPA, MySQL
 
 ### STS IDE: 
 * src/main/java : 
-controllers, services, repositories, models 
+
+controllers, repositories, models 
 
 * src/main/resources :
+
 application.properties, 
 
 doctor_patient_db.sql
@@ -99,7 +101,7 @@ doctor_patient_db.sql
 
 * Create schema -> Doctor_Patient_DB in MySQL Workbench
 
-* Run doctor_patient_db.sql - To create the doctor table & to insert dummy records
+* Run doctor_patient_db.sql - To create the doctor, patient, appointment, prescription, medical_history table & to insert dummy records
 
 * Setup the datasource configuration in application.properties to establish the connection between springboot and mysql
 
