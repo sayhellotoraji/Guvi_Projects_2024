@@ -35,7 +35,9 @@ https://github.com/sayhellotoraji/Guvi_Projects_2024/tree/main/Capstone_Project/
 
 * Registration of Passengers page developed using Bootstrap
 
-* Passengers can view multiple bus schedules, book new tickets & view their previous bookings and also browse buses based on date and from-to location.
+* Passengers can view multiple bus schedules and also browse buses based on date and from-to location, book new tickets & view their previous bookings 
+
+* Passengers can also Generate PDF - Ticket Invoice of their latest booking
 
 * Implemented Controllers using Spring Data Rest Dependency, Repository (JPA), Model Layers.
 
