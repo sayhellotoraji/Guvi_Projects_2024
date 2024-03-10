@@ -5,17 +5,26 @@
 	<title>Modify Passenger Profile</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+	<style>
+		button {
+			padding: 5px;
+			margin-right: 5px;
+		}
+
+		input {
+			padding: 5px;
+		}
+	</style>
 </head>
 
-<body>
+<body style="background-color: lightgray">
 	<p th:text="'Passenger Id:   '+${id}" />
 	<p th:text="'Passenger Name: '+${name}" />
 	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
-
-	<div align="center">
-		<h1>Modify Passenger Profile</h1>
-
-		<center>
+	<center>
+		<div align="center" style="background-color: white; width: 45%; height: 95%;">
+			<br>
+			<h1>Modify Passenger Profile</h1>
 
 			<form role="form" method="post" th:action="@{/passenger/modifyprofile/save}"
 				th:object="${modifyPassengerForm}">
@@ -39,20 +48,21 @@
 
 					<tr>
 						<td><label>Enter Password to Confirm</label></td>
-						<td><input type="password" th:field="*{login_password}" placeholder="Old or New Password" required /></td>
+						<td><input type="password" th:field="*{login_password}" placeholder="Old or New Password"
+								required /></td>
 					</tr>
 
-				<h2 style="color: red;"><strong>Change password every 3 months:</strong></h2>
+					<h2 style="color: red;"><strong>Change password every 3 months:</strong></h2>
 				</table>
 				<br />
 				<input type="submit" value="Modify"></input>
-
+				<br>
 			</form>
-			
+
+			<br>
 			<!-- Form 2 for changing password -->
-		</center>
-
-
+	</center>
+	<br>
 	</div>
 </body>
 

@@ -13,11 +13,20 @@
 			border-collapse: collapse;
 			width: 50%;
 		}
+
+		button {
+			padding: 5px;
+			margin-right: 5px;
+		}
+
+		input {
+			padding: 5px
+		}
 	</style>
 
 </head>
 
-<body>
+<body style="background-color: lightgray">
 	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>
 	<div align="center">
 
@@ -29,44 +38,61 @@
 			<h1>Available Seats: </h1>
 			<h1 id="available" th:value="${seatsAvailable}" th:text="${seatsAvailable}"></h1>
 			<h1 style="color: red;" id="message"></h1>
+			
+			<h2>Only enter number of seats</h2>
 
 			<form role="form" method="post" th:action="@{/passenger/booking/save}" th:object="${bookingForm}">
 				<table>
 					<tr>
 						<td>
-							<label>Passenger Id:</label>
+							<label>
+								<h4>Passenger Id:</h4>
+							</label>
 							<input type="text" th:field="*{passengerId}" readonly />
 						</td>
 
 						<td>
-							<label>Passenger Name:</label>
+							<label>
+								<h4>Passenger Name:</h4>
+							</label>
 							<input type="text" th:field="*{passengerName}" readonly />
 						</td>
 
 						<td>
-							<label>Bus Id:</label>
+							<label>
+								<h4>Bus Id:</h4>
+							</label>
 							<input type="text" th:field="*{busId}" readonly />
 						</td>
 
 						<td>
-							<label>Bus Name:</label>
+							<label>
+								<h4>Bus Name:</h4>
+							</label>
 							<input type="text" th:field="*{busName}" readonly />
 						</td>
 
 						<td>
-							<label>Seat Qty:</label>
-							<input id="qty" type="text" th:field="*{seatQty}" onkeyup="update()" placeholder="0"
+							<label>
+								<h4>Seat Qty:</h4>
+							</label>
+							<!-- Autofocus & onfocus attributes removes the returned value 0 from backend. -->
+							<input id="qty" type="text" th:field="*{seatQty}" autofocus onfocus="this.value=''" onkeyup="update()" placeholder="0"
 								required />
 						</td>
 
 						<td>
-							<label>Price:</label>
+							<label>
+								<h4>Price:</h4>
+							</label>
 							<input id="price" type="text" th:field="*{price}" readonly />
 						</td>
 
 						<td>
-							<label>Amount:</label>
-							<input id="amount" type="text" th:field="*{amount}" />
+							<label>
+								<h4>Amount:</h4>
+							</label>
+							<input id="amount" type="text" th:field="*{amount}" readonly/>
 						</td>
 					</tr>
 				</table>
@@ -81,7 +107,7 @@
 			var available = parseInt(document.getElementById("available").innerHTML);
 			var price = parseInt(document.getElementById("price").value);
 
-			if (qty>0 && qty <= available) {
+			if (qty > 0 && qty <= available) {
 				document.getElementById("message").innerHTML = ""
 				document.getElementById("amount").value =
 					qty * price;
@@ -91,7 +117,7 @@
 			}
 		}
 
-	
+
 	</script>
 </body>
 

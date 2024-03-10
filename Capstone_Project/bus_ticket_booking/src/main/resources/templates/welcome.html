@@ -14,36 +14,61 @@
 			text-align: center;
 			table-layout: fixed;
 		}
+		a{
+			font-size: 24px;
+			margin-right: 50px;
+		}
+
+		input {
+			padding: 5px;
+		}
 	</style>
 </head>
 
-<body>
+<body style="background-color: lightgray">
+
+	<a href="http://localhost:8083/logout">
+		<h2 style="margin-left: 10px; font-size: 24px;">Logout</h2>
+	</a>
 
 	<center>
 		<h1>Passenger Portal</h1>
 
 	</center>
+	<div class="container">
 
-	<a href="http://localhost:8083/logout">Logout</a>
-	<p th:text="'Passenger ID:   '+${id}" />
-	<p th:text="'Passenger Name: '+${name}" />
+		<p th:text="'Passenger ID:   '+${id}" />
+		<p th:text="'Passenger Name: '+${name}" />
 
-	<!--	<h3 style="background-color: cyan;" th:text="${message}"></h3> -->
+		<!--	<h3 style="background-color: cyan;" th:text="${message}"></h3> -->
 
-	<h1>Menu</h1>
-	<a th:href="@{/passenger/modifyprofile/{id}(id=${id})}">My Profile</a>
-	<a th:href="@{/passenger/busschedules/{id}(id=${id})}">Bus Schedules</a>
-	<a th:href="@{/passenger/booking/{id}(id=${id})}">My Bookings</a>
+		<h1>Menu</h1>
+		<tr>
+			<td>
+				<a th:href="@{/passenger/modifyprofile/{id}(id=${id})}">
+					> My Profile
+				</a>
+			</td>
+			<td>
+				<a th:href="@{/passenger/busschedules/{id}(id=${id})}">
+					> Bus Schedules
+				</a>
+			</td>
+			<td>
+				<a th:href="@{/passenger/booking/{id}(id=${id})}">
+					> My Bookings
+				</a>
+			</td>
+		</tr>
+		<br>
+		<br>
+		<h1>Browse and Book Bus Tickets</h1>
+		<form role="form" method="get" action="/passenger/busschedules">
 
-	<br>
-	<br>
-	<h1>Browse and Book Bus Tickets</h1>
-	<form role="form" method="get" action="/passenger/busschedules">
+			<td><label for="sDate">Journey Date:</label></td>
+			<td><input id="sDate" type="date" name="sDate" required /></td>
 
-		<td><label for="sDate">Journey Date:</label></td>
-		<td><input id="sDate" type="date" name="sDate" required /></td>
-
-		<!--		
+			<!--		
 		<td><label for="fromLoc">From:</label></td>
 		<td><input id="fromLoc" type="text" name="fromLoc" /></td>
 
@@ -51,28 +76,29 @@
 		<td><input id="toLoc" type="text" name="toLoc" /></td>
 		-->
 
-		<td>
-			<input name="passengerId" th:value="${id}" hidden>
-			<label for="fromLoc">From Location:</label>
-			<select name="fromLoc">
-				<option th:each="f : ${from}" th:value="${f}" th:text="${f}" required>
-				</option>
-			</select>
-		</td>
+			<td>
+				<input name="passengerId" th:value="${id}" hidden>
+				<label for="fromLoc">From Location:</label>
+				<select name="fromLoc">
+					<option th:each="f : ${from}" th:value="${f}" th:text="${f}" required>
+					</option>
+				</select>
+			</td>
 
-		<td>
-			<label for="toLoc">To Location:</label>
-			<select name="toLoc">
-				<option th:each="t : ${to}" th:value="${t}" th:text="${t}" required>
-				</option>
-			</select>
-		</td>
-		<td><input type="submit" value="Search"></td>
+			<td>
+				<label for="toLoc">To Location:</label>
+				<select name="toLoc">
+					<option th:each="t : ${to}" th:value="${t}" th:text="${t}" required>
+					</option>
+				</select>
+			</td>
+			<td><input type="submit" value="Search"></td>
 
-	</form>
+		</form>
 
 
-	</table>
+		</table>
+	</div>
 	</center>
 </body>
 
