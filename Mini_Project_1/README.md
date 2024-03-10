@@ -20,10 +20,16 @@ Backend: https://github.com/sayhellotoraji/Guvi_Projects_2024/tree/main/Mini_Pro
 
 Frontend: https://github.com/sayhellotoraji/Guvi_Projects_2024/tree/main/Mini_Project_1/employee_management_frontend
 
+Views & Outputs: https://github.com/sayhellotoraji/Guvi_Projects_2024/tree/main/Mini_Project_1/Views%20%26%20Output%20Images
 
 
 Features Developed:
+
+* Developed Add, View, Update & Delete functionality with respect to Employee management
+
 * Implemented Controller, Service, Repository (JPA), Model Layers.
+
+* Designed database and created table.
 
 * Tested the application with Mockito & JUnit.
 
@@ -33,9 +39,6 @@ Features Developed:
 
 * Used Swagger to document and test REST Api Endpoints.
  
- 
- 
-
 
 ## Technologies Used
 
@@ -57,7 +60,7 @@ Features Developed:
 
 ## System Architecture
 
-Separation of Concens Principle - Followed
+### Followed - Separation of Concerns Principle 
 
 Independent working of:
 
@@ -65,7 +68,7 @@ Frontend - HTML, CSS, JavaScript
 
 Backend  - Springboot ( MVC ), JPA, MySQL
 
-Seamless integration between front and backend with the help of controllers & REST APIs
+* Seamless integration between front and backend with the help of controllers & REST APIs
 
 
 
@@ -92,18 +95,20 @@ Containts 3 folders
 
 ## Setup 
 
-Springboot Setup:
+### Springboot Setup:
 * Import the employee_management project into the STS IDE
 
 * Right click POM.xml and Select Maven/Update Project or Run mvn install - All the necessary dependencies mentioned in the POM.xml gets downloaded locally 
 
-MySQL Setup:
+### MySQL Setup:
 
 * Create schema -> Employee_Management in MySQL Workbench
 
 * Run employee_management_working.sql - To create the employee table & to insert dummy records
 
-VS Code Setup: 
+* Setup the datasource configuration in application.properties to establish the connection between springboot and mysql
+
+### VS Code Setup: 
 
 * Open the employee_management_frontend folder in VS Code 
 
@@ -123,21 +128,21 @@ spring.datasource.url= jdbc:mysql://127.0.0.1:3306/Employee_Management
 
 ## Run Project
 
-Backend Procedure:
+### Backend Application startup:
 
 After successfully setting up the project, Navigate to the project root directory & select the main Spring boot application class file and click on Run button in STS to start the application
 
 The application after successful build, gets hosted locally in localhost:8081
 
 
-Frontend Procedure:
+### Frontend Application startup:
 
 Select the index.html file and click on Live Server, which is a VS Code extension, to host frontend locally
 
 
 ## Important Application URLs: Local
 
-Backend:
+### Backend:
 * Swagger RestApi Endpoints Documentation 
 
 http://localhost:8081/swagger-ui/index.html#/ 
@@ -147,14 +152,14 @@ http://localhost:8081/swagger-ui/index.html#/
 http://localhost:8081/login
 
 
-Admin Credentials for Testing Purpose:
+* Admin Credentials for Testing Purpose:
 
-Username: Raja
+    Username: Raja
 
-Password: JFSWD2
+    Password: JFSWD2
 
-Frontend:
-* Frontend View landing page: Default ( http://127.0.0.1:5500 )
+### Frontend:
+* Frontend View landing page: index.html
 
 http://127.0.0.1:5500/html/
 
