@@ -4,10 +4,15 @@
 <head>
 	<title>Modify Prescription</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+	<style>
+		button {
+			padding: 5px;
+			margin-right: 5px;
+		}
+	</style>
 </head>
 
-<body>
+<body style="background-color: lightgray">
 	<p th:text="'Patient ID:   '+${id}" />
 	<p th:text="'Patient Name: '+${name}" />
 	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>

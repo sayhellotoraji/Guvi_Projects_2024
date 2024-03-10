@@ -7,18 +7,23 @@
 
 </head>
 
-<body>
-	<a href="http://localhost:8082/logout">Logout</a>
+<body style="background-color: lightgray">
+	<a href="http://localhost:8082/logout">
+		<h2 style="margin-left: 10px;">Logout</h2>
+	</a>
+	<br>
 	<center>
-		<h1>Doctor Portal</h1>
+		<div class="container">
+			<h1>Doctor Portal</h1>
+
+
+			<p th:text="'Doctor ID:   '+${id}" />
+			<p th:text="'Doctor Name: '+${name}" />
+
+			<a th:href="@{checkappointment/{id}(id=${id})}"><h2>My Appointments</h2></a>
+			<a th:href="@{issuedprescription/{id}(id=${id})}"><h2>Issued Prescriptions</h2></a>
+		</div>
 	</center>
-
-	<p th:text="'Doctor ID:   '+${id}" />
-	<p th:text="'Doctor Name: '+${name}" />
-
-	<a th:href="@{checkappointment/{id}(id=${id})}">My Appointments</a>
-	<a th:href="@{issuedprescription/{id}(id=${id})}">Issued Prescriptions</a>
-
 </body>
 
 </html>

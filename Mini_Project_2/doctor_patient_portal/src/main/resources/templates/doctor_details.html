@@ -2,8 +2,8 @@
 <html>
 
 <head>
-	  <title>Medical History</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Medical History</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<style>
 		table,
@@ -16,6 +16,11 @@
 			table-layout: fixed;
 		}
 
+		button {
+			padding: 5px;
+			margin-right: 5px;
+		}
+
 		a {
 			text-decoration: none;
 			color: white;
@@ -23,7 +28,7 @@
 	</style>
 </head>
 
-<body>
+<body style="background-color: lightgray">
 	<!--<a th:href="">Back to Home</a>-->
 
 	<button style="background-color: blue; color: white;" onclick="history.go(-1)"> Go to Dashboard</button>

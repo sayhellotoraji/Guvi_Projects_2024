@@ -16,6 +16,11 @@
 			table-layout: fixed;
 		}
 
+		button {
+			padding: 5px;
+			margin-right: 5px;
+		}
+
 		a {
 			text-decoration: none;
 			color: white;
@@ -23,7 +28,7 @@
 	</style>
 </head>
 
-<body>
+<body style="background-color: lightgray">
 	<!--<a th:href="">Back to Home</a>-->
 	<p th:text="'Patient ID:   '+${id}" />
 	<p th:text="'Patient Name: '+${name}" />

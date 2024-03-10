@@ -57,7 +57,7 @@ public class PatientController {
 	@PostMapping({ "register/save" })
 	public String postRegister(@ModelAttribute Patient patient, Model model) {
 		patientRepo.save(patient);
-		return "redirect:/patient/login";
+		return "redirect:/login";
 	}
 
 	// **********************************************************
