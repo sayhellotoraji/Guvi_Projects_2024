@@ -95,7 +95,7 @@ Containts 3 folders
 Springboot Setup:
 * Import the employee_management project into the STS IDE
 
-* Right click POM.xml and Select build/ Run mvn install - All the necessary dependencies mentioned in the POM.xml gets downloaded locally 
+* Right click POM.xml and Select Maven/Update Project or Run mvn install - All the necessary dependencies mentioned in the POM.xml gets downloaded locally 
 
 MySQL Setup:
 
