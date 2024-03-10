@@ -24,7 +24,7 @@ CREATE TABLE employee (
 
 
 # DML - Insertion of Records
-insert into employee(first_name, middle_name, last_name, dob, sex, mobile_no, email, address, doj, department_name, salary) values('Raja','Sekar','T', '1996-11-03', 'Male', '9999999999', 'sayhellotoraji@gmail.com', '136J1, Tiruvannamalai, Tamil Nadu',  '2021-3-10', 'Development', 1200000);
+insert into employee(first_name, middle_name, last_name, dob, sex, mobile_no, email, address, doj, department_name, salary) values('Raja','Sekar','T', '1996-11-03', 'Male', '9999999999', 'rajasekar@gmail.com', '136J1, Tiruvannamalai, Tamil Nadu',  '2021-3-10', 'Development', 1200000);
 
 
 # DQL - Read All Records from the entity
