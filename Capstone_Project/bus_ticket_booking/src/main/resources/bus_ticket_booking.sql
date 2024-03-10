@@ -74,7 +74,6 @@ CREATE TABLE booking (
         REFERENCES bus (bus_id)
 );
 
-INSERT INTO booking(passenger_id, passenger_name, bus_id, bus_name, seat_qty, booked_price, amount)
-VALUES(1, 'Rajasekar T', 1, 'Mahalakshmi', 5, 350, 1750);
+# INSERT INTO booking(passenger_id, passenger_name, bus_id, bus_name, seat_qty, booked_price, amount)VALUES(1, 'Rajasekar T', 1, 'Mahalakshmi', 5, 350, 1750);
 
 SELECT * FROM booking;
